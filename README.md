@@ -1,6 +1,22 @@
 # MdStarwars
 
-PoC for md consuming swapi
+PoC para MD consumiendo Swapi
+
+[Demo of project](https://xxx.web.app)
+
+## Table of Contents
+
+- [Quick Start](#quick-start)
+- [Description](#description)
+- [Code scaffolding](#code-scaffolding)
+- [Contact](#contact)
+
+## **Quick Start**
+
+1. Run `npm i`
+2. Run `npm run start`
+
+## **Description**
 
 Entendemos que la primera versión era una prueba de concepto con motivos de presentación a negocio y ahora se requiere una estructura base empresarial. Nos basaremos en las mejores prácticas, clean code y últimas tecnologías disponibles, usando:
 
@@ -43,3 +59,32 @@ Entendemos que la primera versión era una prueba de concepto con motivos de pre
 - **CodeQL** analysis
 - **Husky and lint-staged** to pass lint and prettier to changed code on commit
 - **Commitlint** to use [Convetional Commits](https://www.conventionalcommits.org/)
+
+## **Code scaffolding**
+
+```bash
+# Create Lazy Feature
+> ng g module features/(nombre-feature) --module [app | parent-module-name] --route (route-name)
+
+# Create Data-Access of a Feature (Not Shared)
+> ng g module features/(nombre-feature)/data-access-(state-name) --module features/(nombre-feature-padre)
+> ng g @ngrx/schematics:feature features/(nombre-feature)/data-access-(state-name)/+state/(StateName) -m features/(nombre-feature)/data-access-(state-name) --creators --api
+> ng g service features/(nombre-feature)/data-access-(state-name)/services/(service-name)
+> ng g interface features/(nombre-feature)/data-access-(state-name)/models/(model-name) model
+
+# Create Shared Data-Access
+> ng g module shared/data-access-(state-name) --module shared
+> ng g @ngrx/schematics:feature shared/data-access-(state-name)/+state/(StateName) -m shared/data-access-(state-name) --creators --api
+> ng g service shared/data-access-(state-name)/services/(service-name)
+> ng g interface shared/data-access-(state-name)/models/(model-name) model
+
+# Misc
+> ng g component features/(nombre-feature)/containers/(container-name)
+> ng g component features/(nombre-feature)/components/(component-name)
+> ng g service features/(nombre-feature)/services/(service-name)
+> ng g interface features/(nombre-feature)/models/(model-name) model
+```
+
+## Contact
+
+**Saúl Moro Gómez**

@@ -1,6 +1,7 @@
 module.exports = {
   moduleNameMapper: {
-    '@md-starwars/core/(.*)': '<rootDir>/src/app/core/$1',
+    '@md-starwars/environment': '<rootDir>/src/environments/environment.ts',
+    '@md-starwars/(.*)': '<rootDir>/src/app/$1',
   },
   preset: 'jest-preset-angular',
   setupFilesAfterEnv: ['<rootDir>/src/setup-jest.ts'],
