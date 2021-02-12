@@ -18,8 +18,8 @@
     "module": "es2020",
     "lib": ["es2018", "dom"],
     "paths": {
-      "@md-starwars/*": ["src/app/*"],
-      "@md-starwars/environment": ["src/environments/environment.ts"]
+      "@md-starwars/environment": ["src/environments/environment.ts"],
+      "@md-starwars/*": ["src/app/*"]
     }
   },
   "angularCompilerOptions": {
