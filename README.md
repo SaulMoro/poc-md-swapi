@@ -1,27 +1,45 @@
 # MdStarwars
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.0.
+PoC for md consuming swapi
 
-## Development server
+Entendemos que la primera versión era una prueba de concepto con motivos de presentación a negocio y ahora se requiere una estructura base empresarial. Nos basaremos en las mejores prácticas, clean code y últimas tecnologías disponibles, usando:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+**Angular Core**
 
-## Code scaffolding
+- **Core and Shared modules**
+- **Lazy Loading Features**
+- **Container / Presentational Components** (Smart / Dumb Components)
+- **Strict mode** Angular & Typescript
+- **TailwindCSS** (supported natively on Angular 11.2) for fast mockup
+- **Formly** for generating dynamic forms
+- **Performance** with the use of trackBy, Componentes OnPush, Intersection Observer, Virtual Scrolling, Lazy images, ...
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+**State Management**
 
-## Build
+- **NgRx** as State Management
+- **NgRx Entity** for the treatment of entities
+- **NgRx Router State** to manage the state of the App from the Router in NgRx
+- [**Good Actions Hygiene**](https://www.youtube.com/watch?v=JmnsEvoy-gY) to think on actions as events ([Source] Event), not as commands
+- [**ngrx-store-localstorage**](https://github.com/btroncone/ngrx-store-localstorage) to save or retrieve parts of the state from the localStorage. We rehydrate NgRx content (Cache)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+**Test**
 
-## Running unit tests
+- [Jest](https://jestjs.io) for running unit tests
+- [Angular Testing Library](https://github.com/testing-library/angular-testing-library) for unit test assertions
+- [Cypress](https://cypress.io) for running E2E tests
+- [Cypress Testing Library](https://github.com/testing-library/cypress-testing-library) for end to end test assertions
+- [MSW (Mock Service Worker)](https://mswjs.io/) for mock tests, e2e tests and dev environment
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+**Other**
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- **eslint and stylelint** as lint tools with ngrx and rxjs rules
+- **Git Flow**
+- **Dark Mode** with Media Query 'prefers-color-scheme: dark' and localStorage support
+- **Prefetch Directive** to preload information when a component is hovered over or displayed on the screen
+- **Auto Lazy Load Images Directive** to automatically add lazy load to images and data-srcset support using lazysizes lib
+- **Skeleton content loader** with TailwindCSS
+- **Barrel files**
+- **Auto deploy on Merge and preview on PR** with Github Actions
+- **CodeQL** analysis
+- **Husky and lint-staged** to pass lint and prettier to changed code on commit
+- **Commitlint** to use [Convetional Commits](https://www.conventionalcommits.org/)
