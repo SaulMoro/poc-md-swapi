@@ -18,6 +18,7 @@ export const UsersHandlers = [
     return res(
       ctx.status(200),
       ctx.json({
+        code: 200,
         status: 'success',
         message: {
           Authorization: 'Bearer XQiOjE2MTMyMTc4ODIsImV4cCI6MTY',
@@ -38,6 +39,6 @@ export const UsersHandlers = [
     }
 
     sessionStorage.setItem('is-signin', 'true');
-    return res(ctx.status(201), ctx.json({ status: 'success', message: { name, email } } as SignInResponse));
+    return res(ctx.status(201), ctx.json({ code: 201, status: 'success', message: { name, email } } as SignInResponse));
   }),
 ];

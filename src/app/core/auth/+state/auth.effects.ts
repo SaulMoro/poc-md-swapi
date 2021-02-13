@@ -27,7 +27,7 @@ export class AuthEffects {
     this.actions$.pipe(
       ofType(AuthActions.signIn),
       concatMap(({ user }) =>
-        this.authService.signIn(user).pipe(
+        this.authService.signIn({ ...user, password: user.password ?? '' }).pipe(
           map(({ message }) => AuthApiActions.signInSuccess({ user: message })),
           catchError((error: unknown) => of(AuthApiActions.signInFailure({ error: (error as ErrorResponse).message }))),
         ),
