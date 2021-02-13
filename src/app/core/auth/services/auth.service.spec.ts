@@ -41,6 +41,7 @@ describe('AuthService', () => {
       expect(res.message).toBeTruthy();
       expect(res.message.name).toBe(req.name);
       expect(res.message.email).toBe(req.email);
+      expect(res.message.role).toBe('user');
     });
   });
 

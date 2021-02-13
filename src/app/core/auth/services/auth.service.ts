@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { environment } from '@md-starwars/environment';
 import { LoginRequest, LoginResponse, SignInRequest, SignInResponse } from '../models';
+import { isAdmin } from '../utils/roles.util';
 
 const API_PATCH = '/api/v1/users';
 
@@ -18,7 +20,13 @@ export class AuthService {
   }
 
   signIn(user: SignInRequest): Observable<SignInResponse> {
-    return this.http.post<SignInResponse>(`${environment.authUrl}${API_PATCH}`, user);
+    return this.http.post<SignInResponse>(`${environment.authUrl}${API_PATCH}`, user).pipe(
+      // mock role of user by email
+      map((response) => ({
+        ...response,
+        message: { ...response.message, role: isAdmin(response.message.email) ? 'admin' : 'user' },
+      })),
+    );
   }
 
   logout(): Observable<boolean> {
