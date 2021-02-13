@@ -9,7 +9,6 @@ describe('Applicaton smoke test', () => {
   it('the application boots up', () => {
     const bootApplication = () => {
       const { router, run } = setup();
-
       run(() => router.initialNavigation());
     };
 
@@ -18,7 +17,6 @@ describe('Applicaton smoke test', () => {
 
   it('navigation works', async () => {
     const { router, run } = setup();
-
     const canNavigate = await run(() => router.navigateByUrl('/'));
 
     expect(canNavigate).toBe(true);
