@@ -1,1 +1,1 @@
-export const isAdmin = (email: string) => email === 'admin@admin.com';
+export const isAdmin = (email: string) => email.includes('admin');

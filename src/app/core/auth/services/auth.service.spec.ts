@@ -31,7 +31,7 @@ describe('AuthService', () => {
     });
   });
 
-  it('should signIn', () => {
+  it('should signIn role user', () => {
     const service = setup();
     const req: SignInRequest = { name: 'test', email: 'test@test.com', password: 'test' };
 
@@ -42,6 +42,20 @@ describe('AuthService', () => {
       expect(res.message.name).toBe(req.name);
       expect(res.message.email).toBe(req.email);
       expect(res.message.role).toBe('user');
+    });
+  });
+
+  it('should signIn role admin', () => {
+    const service = setup();
+    const req: SignInRequest = { name: 'test', email: 'testadmin@test.com', password: 'test' };
+
+    service.signIn(req).subscribe((res) => {
+      expect(res).toBeTruthy();
+      expect(res.code).toBe(200);
+      expect(res.message).toBeTruthy();
+      expect(res.message.name).toBe(req.name);
+      expect(res.message.email).toBe(req.email);
+      expect(res.message.role).toBe('admin');
     });
   });
 
