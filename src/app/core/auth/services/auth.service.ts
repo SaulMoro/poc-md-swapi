@@ -21,10 +21,10 @@ export class AuthService {
 
   signIn(user: SignInRequest): Observable<SignInResponse> {
     return this.http.post<SignInResponse>(`${environment.authUrl}${API_PATCH}`, user).pipe(
-      // mock role of user by email
+      // mock roles of user by email
       map((response) => ({
         ...response,
-        message: { ...response.message, role: isAdmin(response.message.email) ? 'admin' : 'user' },
+        message: { ...response.message, roles: isAdmin(response.message.email) ? ['admin', 'user'] : ['user'] },
       })),
     );
   }
