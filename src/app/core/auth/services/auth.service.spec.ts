@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AuthService } from './auth.service';
-import { AuthToken, LoginRequest, SignInRequest, User, UsersResponse } from '../models';
+import { LoginRequest, SignInRequest } from '../models';
 
 describe('AuthService', () => {
   it('should be created', () => {
@@ -39,8 +39,8 @@ describe('AuthService', () => {
       expect(res).toBeTruthy();
       expect(res.code).toBe(200);
       expect(res.message).toBeTruthy();
-      expect(((res as UsersResponse).message as User).name).toBe(req.name);
-      expect(((res as UsersResponse).message as User).email).toBe(req.email);
+      expect(res.message.name).toBe(req.name);
+      expect(res.message.email).toBe(req.email);
     });
   });
 
@@ -77,7 +77,7 @@ describe('AuthService', () => {
     service.login(req).subscribe((res) => {
       expect(res).toBeTruthy();
       expect(res.code).toBe(200);
-      expect((res.message as AuthToken).Authorization).toBeTruthy();
+      expect(res.message.Authorization).toBeTruthy();
     });
   });
 

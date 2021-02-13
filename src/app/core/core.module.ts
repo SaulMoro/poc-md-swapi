@@ -7,8 +7,9 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { environment } from '@md-starwars/environment';
 import { TranslocoRootModule } from './transloco-root.module';
-import { reducers } from './core.state';
+import { localStorageSyncMetaReducer, reducers } from './core.state';
 import { UiEffects } from './ui';
+import { AuthEffects } from './auth';
 
 @NgModule({
   imports: [
@@ -25,8 +26,9 @@ import { UiEffects } from './ui';
         strictActionSerializability: true,
         strictActionTypeUniqueness: true,
       },
+      metaReducers: [localStorageSyncMetaReducer],
     }),
-    EffectsModule.forRoot([UiEffects]),
+    EffectsModule.forRoot([UiEffects, AuthEffects]),
     StoreRouterConnectingModule.forRoot({ routerState: RouterState.Minimal }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
 

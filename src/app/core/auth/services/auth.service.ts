@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 
 import { environment } from '@md-starwars/environment';
-import { LoginRequest, SignInRequest, UsersResponse } from '../models';
+import { LoginRequest, LoginResponse, SignInRequest, SignInResponse } from '../models';
 
 const API_PATCH = '/api/v1/users';
 
@@ -13,12 +13,12 @@ const API_PATCH = '/api/v1/users';
 export class AuthService {
   constructor(private http: HttpClient) {}
 
-  login(user: LoginRequest): Observable<UsersResponse> {
-    return this.http.post<UsersResponse>(`${environment.authUrl}/login`, user);
+  login(user: LoginRequest): Observable<LoginResponse> {
+    return this.http.post<LoginResponse>(`${environment.authUrl}/login`, user);
   }
 
-  signIn(user: SignInRequest): Observable<UsersResponse> {
-    return this.http.post<UsersResponse>(`${environment.authUrl}${API_PATCH}`, user);
+  signIn(user: SignInRequest): Observable<SignInResponse> {
+    return this.http.post<SignInResponse>(`${environment.authUrl}${API_PATCH}`, user);
   }
 
   logout(): Observable<boolean> {
