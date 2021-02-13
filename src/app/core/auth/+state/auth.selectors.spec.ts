@@ -1,5 +1,6 @@
 import { AuthState, AUTH_FEATURE_KEY, initialState } from './auth.reducer';
 import * as AuthSelectors from './auth.selectors';
+import { User } from '../models';
 
 describe('Auth Selectors', () => {
   it('should select Auth State', () => {
@@ -31,6 +32,16 @@ describe('Auth Selectors', () => {
 
     expect(AuthSelectors.selectUser(state)).toBe(initialState.user);
     expect(AuthSelectors.selectUser(stateUser)).toBe(user);
+  });
+
+  it('should select Is Admin', () => {
+    const client: User = { email: 'client@test.com', role: 'user' };
+    const admin: User = { email: 'admin@test.com', role: 'admin' };
+    const stateClient = setup({ user: client });
+    const stateAdmin = setup({ user: admin });
+
+    expect(AuthSelectors.selectIsAdmin(stateClient)).toBe(false);
+    expect(AuthSelectors.selectIsAdmin(stateAdmin)).toBe(true);
   });
 
   it('should select Token', () => {
