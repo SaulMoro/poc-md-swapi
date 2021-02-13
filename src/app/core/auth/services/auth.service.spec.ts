@@ -80,6 +80,14 @@ describe('AuthService', () => {
       expect((res.message as AuthToken).Authorization).toBeTruthy();
     });
   });
+
+  it('should logout', () => {
+    const service = setup();
+
+    service.logout().subscribe((res) => {
+      expect(res).toBeTruthy();
+    });
+  });
 });
 
 function setup(): AuthService {
