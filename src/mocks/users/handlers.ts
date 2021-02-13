@@ -1,5 +1,5 @@
 import { rest } from 'msw';
-import { LoginRequest, SignInRequest, UsersResponse } from '@md-starwars/auth';
+import { LoginRequest, SignInRequest, UsersResponse } from '@md-starwars/core/auth';
 
 const API_PATCH = 'https://rest-api-slim-php.herokuapp.com';
 
