@@ -10,26 +10,27 @@ describe('FilmsService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should get not found if not exists', async (done) => {
-    const service = setup();
+  describe('getFilm', () => {
+    it('should get not found if not exists', async (done) => {
+      const service = setup();
 
-    service.getFilm(9999).subscribe(
-      () => EMPTY,
-      (error: unknown) => {
-        expect(error).toBeTruthy();
+      service.getFilm(9999).subscribe(
+        () => EMPTY,
+        (error: unknown) => {
+          expect(error).toBeTruthy();
+          done();
+        },
+      );
+    });
+
+    it('should get film if exists', async (done) => {
+      const service = setup();
+
+      service.getFilm(1).subscribe((res) => {
+        expect(res).toBeTruthy();
+        expect(res.title).toBeTruthy();
         done();
-      },
-    );
-  });
-
-  it('should get film if exists', async (done) => {
-    const service = setup();
-
-    service.getFilm(1).subscribe((res) => {
-      console.log(res);
-      expect(res).toBeTruthy();
-      expect(res.title).toBeTruthy();
-      done();
+      });
     });
   });
 });
