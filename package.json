@@ -27,6 +27,7 @@
     "@angular/platform-browser": "~11.2.0",
     "@angular/platform-browser-dynamic": "~11.2.0",
     "@angular/router": "~11.2.0",
+    "@ngneat/svg-icon": "^2.3.0",
     "@ngneat/transloco": "^2.20.0",
     "@ngrx/effects": "^11.0.0",
     "@ngrx/entity": "^11.0.0",

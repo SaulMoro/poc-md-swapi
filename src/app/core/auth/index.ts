@@ -7,5 +7,6 @@ export * from './+state/auth.effects';
 
 import { User } from './models';
 import * as AuthActions from './+state/auth.actions';
+import * as AuthApiActions from './+state/auth-api.actions';
 import * as AuthSelectors from './+state/auth.selectors';
-export { User, AuthActions, AuthSelectors };
+export { User, AuthActions, AuthApiActions, AuthSelectors };
