@@ -7,7 +7,7 @@ export const FilmsHandlers = [
   // details
   rest.get(`${API_PATCH}:id/`, (req, res, ctx) => {
     const { id } = req.params;
-    const film = data.filter((f) => f.url.endsWith(`/${id}/`));
+    const film = data.find((f) => f.url.endsWith(`/${id}/`));
 
     return film ? res(ctx.status(200), ctx.json(film)) : res(ctx.status(404), ctx.json({ error: 'not found' }));
   }),
