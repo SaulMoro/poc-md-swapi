@@ -1,0 +1,56 @@
+$md-font-path: '^assets/fonts/';
+
+@font-face {
+  font-family: FontDutti;
+  src: url($md-font-path + 'FontDutti_v3.eot') format('eot');
+  src: url($md-font-path + 'FontDutti_v3.eot#iefix') format('embedded-opentype'),
+    url($md-font-path + 'FontDutti_v3.woff?v=1.8') format('woff'),
+    url($md-font-path + 'FontDutti_v3.ttf') format('truetype'),
+    url($md-font-path + 'FontDutti_v3.svg#FontDutti_v3') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: BasisGrotesque;
+  src: url($md-font-path + 'BasisGrotesque-Light-Pro.eot');
+  src: url($md-font-path + 'BasisGrotesque-Light-Pro.eot?#iefix') format('embedded-opentype'),
+    url($md-font-path + 'BasisGrotesque-Light-Pro.woff2') format('woff2'),
+    url($md-font-path + 'BasisGrotesque-Light-Pro.woff') format('woff'),
+    url($md-font-path + 'BasisGrotesque-Light-Pro.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: BasisGrotesque;
+  src: url($md-font-path + 'BasisGrotesque-Regular-Pro.eot');
+  src: url($md-font-path + 'BasisGrotesque-Regular-Pro.eot?#iefix') format('embedded-opentype'),
+    url($md-font-path + 'BasisGrotesque-Regular-Pro.woff2') format('woff2'),
+    url($md-font-path + 'BasisGrotesque-Regular-Pro.woff') format('woff'),
+    url($md-font-path + 'BasisGrotesque-Regular-Pro.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: BasisGrotesque;
+  src: url($md-font-path + 'BasisGrotesque-Medium-Pro.eot');
+  src: url($md-font-path + 'BasisGrotesque-Medium-Pro.eot?#iefix') format('embedded-opentype'),
+    url($md-font-path + 'BasisGrotesque-Medium-Pro.woff2') format('woff2'),
+    url($md-font-path + 'BasisGrotesque-Medium-Pro.woff') format('woff'),
+    url($md-font-path + 'BasisGrotesque-Medium-Pro.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: BasisGrotesque;
+  src: url($md-font-path + 'BasisGrotesque-Bold-Pro.eot');
+  src: url($md-font-path + 'BasisGrotesque-Bold-Pro.eot?#iefix') format('embedded-opentype'),
+    url($md-font-path + 'BasisGrotesque-Bold-Pro.woff2') format('woff2'),
+    url($md-font-path + 'BasisGrotesque-Bold-Pro.woff') format('woff'),
+    url($md-font-path + 'BasisGrotesque-Bold-Pro.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}

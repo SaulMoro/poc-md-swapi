@@ -16,15 +16,18 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "es2020",
-    "lib": [
-      "es2018",
-      "dom"
-    ]
+    "lib": ["es2018", "dom"],
+    "paths": {
+      "@md-starwars/environment": ["src/environments/environment.ts"],
+      "@md-starwars/mocks/*": ["src/mocks/*"],
+      "@md-starwars/*": ["src/app/*"]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true
-  }
+  },
+  "exclude": ["node_modules", "**/node_modules/*", "tmp"]
 }

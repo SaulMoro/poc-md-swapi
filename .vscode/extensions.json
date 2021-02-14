@@ -1,0 +1,13 @@
+{
+  "recommendations": [
+    "angular.ng-template",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "mkaufman.htmlhint",
+    "msjsdiag.debugger-for-chrome",
+    "mikael.angular-beastcode",
+    "stylelint.vscode-stylelint",
+    "bradlc.vscode-tailwindcss",
+    "heybourn.headwind"
+  ]
+}
