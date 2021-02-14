@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { environment } from '@md-starwars/environment';
-import { LoginRequest, LoginResponse, SignInRequest, SignInResponse } from '../models';
+import { AuthToken, LoginRequest, SignInRequest, User, UsersApiResponse } from '../models';
 import { isAdmin } from '../utils/roles.util';
 
 const API_PATCH = '/api/v1/users';
@@ -15,12 +15,12 @@ const API_PATCH = '/api/v1/users';
 export class AuthService {
   constructor(private http: HttpClient) {}
 
-  login(user: LoginRequest): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(`${environment.authUrl}/login`, user);
+  login(user: LoginRequest): Observable<UsersApiResponse<AuthToken>> {
+    return this.http.post<UsersApiResponse<AuthToken>>(`${environment.authUrl}/login`, user);
   }
 
-  signIn(user: SignInRequest): Observable<SignInResponse> {
-    return this.http.post<SignInResponse>(`${environment.authUrl}${API_PATCH}`, user).pipe(
+  signIn(user: SignInRequest): Observable<UsersApiResponse<User>> {
+    return this.http.post<UsersApiResponse<User>>(`${environment.authUrl}${API_PATCH}`, user).pipe(
       // mock roles of user by email
       map((response) => ({
         ...response,

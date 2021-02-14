@@ -1,5 +1,5 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { RouterState, StoreRouterConnectingModule } from '@ngrx/router-store';
@@ -9,7 +9,7 @@ import { environment } from '@md-starwars/environment';
 import { TranslocoRootModule } from './transloco-root.module';
 import { localStorageSyncMetaReducer, reducers } from './core.state';
 import { UiEffects } from './ui';
-import { AuthEffects } from './auth';
+import { AuthEffects, AuthTokenInterceptor } from './auth';
 
 @NgModule({
   imports: [
@@ -35,6 +35,7 @@ import { AuthEffects } from './auth';
     // third party
   ],
   exports: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthTokenInterceptor, multi: true }],
 })
 export class CoreModule {
   constructor(@Optional() @SkipSelf() parentModule: CoreModule) {

@@ -7,7 +7,7 @@ import { catchError, map, concatMap, exhaustMap } from 'rxjs/operators';
 import * as AuthActions from './auth.actions';
 import * as AuthApiActions from './auth-api.actions';
 import { AuthService } from '../services/auth.service';
-import { ErrorResponse } from '../models';
+import { UsersApiResponse } from '../models';
 
 @Injectable()
 export class AuthEffects {
@@ -17,7 +17,9 @@ export class AuthEffects {
       concatMap(({ user }) =>
         this.authService.login(user).pipe(
           map(({ message }) => AuthApiActions.loginSuccess({ token: message })),
-          catchError((error: unknown) => of(AuthApiActions.loginFailure({ error: (error as ErrorResponse).message }))),
+          catchError((error: unknown) =>
+            of(AuthApiActions.loginFailure({ error: (error as UsersApiResponse<string>).message })),
+          ),
         ),
       ),
     ),
@@ -29,7 +31,9 @@ export class AuthEffects {
       concatMap(({ user }) =>
         this.authService.signIn({ ...user, password: user.password ?? '' }).pipe(
           map(({ message }) => AuthApiActions.signInSuccess({ user: message })),
-          catchError((error: unknown) => of(AuthApiActions.signInFailure({ error: (error as ErrorResponse).message }))),
+          catchError((error: unknown) =>
+            of(AuthApiActions.signInFailure({ error: (error as UsersApiResponse<string>).message })),
+          ),
         ),
       ),
     ),
