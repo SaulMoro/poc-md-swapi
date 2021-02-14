@@ -1,0 +1,25 @@
+<aside class="fixed flex flex-col w-full h-full border-t-2" *transloco="let t">
+  <div class="py-4 text-sm pl-14">
+    <button *ngIf="!loggedIn; else isLoggedIn" class="font-bold focus:outline-none" (click)="onOpenLogin()">
+      {{ t('MENU.LOGIN_SIGNIN') }}
+    </button>
+    <ng-template #isLoggedIn>
+      <a class="font-bold" [routerLink]="['/account']">t('MENU.MY_ACCOUNT')</a>
+    </ng-template>
+  </div>
+
+  <nav class="flex flex-col h-full py-10 space-y-6 pl-14 bg-gray-50 dark:bg-gray-800" (click)="onSelectItem()">
+    <a class="hover:text-gray-600" [routerLink]="['/']">
+      {{ t('MENU.INDEX') }}
+    </a>
+    <a class="font-bold hover:text-gray-600" [routerLink]="['/starships']">
+      {{ t('STARSHIPS.TITLE') | uppercase }}
+    </a>
+    <a class="font-bold hover:text-gray-600" [routerLink]="['/films']">
+      {{ t('FILMS.TITLE') | uppercase }}
+    </a>
+    <a class="font-bold hover:text-gray-600" [routerLink]="['/people']">
+      {{ t('PEOPLE.TITLE') | uppercase }}
+    </a>
+  </nav>
+</aside>

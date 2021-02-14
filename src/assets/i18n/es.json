@@ -4,6 +4,30 @@
     "TITLE": "Naves",
     "FIELDS": {}
   },
+  "FILMS": {
+    "TITLE": "Películas"
+  },
+  "PEOPLE": {
+    "TITLE": "Personajes"
+  },
+  "LOGIN": {
+    "TITLE": "Iniciar Sesión",
+    "DESCRIPTION": "Introduzca su correo y contraseña para acceder",
+    "FIELDS": {
+      "EMAIL": "E-mail",
+      "PASSWORD": "Contraseña"
+    },
+    "SIGN_IN": "¿Aún no tienes una cuenta?",
+    "SIGN_IN_LINK": "Regístrate"
+  },
+  "MENU": {
+    "INDEX": "Inicio",
+    "SEARCH": "Buscar",
+    "LOGIN": "Iniciar sesión",
+    "MY_ACCOUNT": "Mi cuenta",
+    "MY_BAG": "Mi cesta",
+    "LOGIN_SIGNIN": "Iniciar sesión / Registrarse"
+  },
   "BUTTONS": {
     "ACCEPT_DEFAULT": "Aceptar",
     "CANCEL_DEFAULT": "Cancelar",

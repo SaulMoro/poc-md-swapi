@@ -1,0 +1,58 @@
+.search-icon::before {
+  content: '\e965';
+}
+
+.user-icon::before {
+  content: '\e96e';
+}
+
+.bag-icon::before {
+  content: '\e968';
+}
+
+.md-icon::before {
+  content: '\e916';
+}
+
+.ma-hamb {
+  cursor: pointer;
+  height: 20px;
+  right: 0;
+  top: 5px;
+  width: 16px;
+  transition: all 0.2s ease-out;
+  box-sizing: initial;
+
+  .ma-hamb-bar {
+    width: 100%;
+    height: 1px;
+    background: black;
+    margin: 3px auto 5px;
+    transition: all 0.3s;
+    backface-visibility: hidden;
+    margin-right: 0;
+
+    @apply dark:bg-gray-200;
+  }
+
+  .ma-hamb-bar__middle {
+    width: 60% !important; /* stylelint-disable-line declaration-no-important */
+  }
+}
+
+.is-open-menu {
+  &.ma-hamb .ma-hamb-bar__top {
+    transform: rotate(45deg) translate(4px, 6px);
+    width: 125%;
+  }
+
+  &.ma-hamb .ma-hamb-bar__middle {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+
+  &.ma-hamb .ma-hamb-bar__bottom {
+    transform: rotate(-45deg) translate(3px, -4px);
+    width: 125%;
+  }
+}

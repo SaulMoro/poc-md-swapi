@@ -14,7 +14,7 @@ export class UiEffects {
     () =>
       this.actions$.pipe(
         ofType(UiActions.toggleTheme),
-        concatLatestFrom(() => this.store.select(UiSelectors.getTheme)),
+        concatLatestFrom(() => this.store.select(UiSelectors.selectTheme)),
         tap(([, theme]) => {
           this.document.body.classList.toggle('dark', theme === 'dark');
           localStorage.setItem(THEME_KEY, theme);
