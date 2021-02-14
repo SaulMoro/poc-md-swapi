@@ -2,7 +2,7 @@ name: Deploy a preview to Firebase on PR
 
 on:
   pull_request:
-    branches: [master]
+    branches: [main]
 
 jobs:
   build-and-preview:
