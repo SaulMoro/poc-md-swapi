@@ -21,11 +21,11 @@ export interface Film {
   characters: string[];
   /** An array of planet resource URLs that are in this film. */
   planets: string[];
-  /** the hypermedia URL of this resource. */
+  /** The hypermedia URL of this resource. */
   url: string;
-  /** the ISO 8601 date format of the time that this resource was created. */
+  /** The ISO 8601 date format of the time that this resource was created. */
   created: string;
-  /** the ISO 8601 date format of the time that this resource was edited.*/
+  /** The ISO 8601 date format of the time that this resource was edited.*/
   edited: string;
 }
 
