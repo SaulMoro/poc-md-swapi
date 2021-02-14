@@ -1,0 +1,71 @@
+<header>
+  <!-- screens < lg -->
+  <div class="flex items-center justify-between px-5 h-14 lg:hidden">
+    <a [routerLink]="['/']" class="pt-1">
+      <svg-icon key="md" size="md"></svg-icon>
+    </a>
+
+    <div class="flex items-center justify-between space-x-4">
+      <app-toggle-theme [theme]="theme" (toggleTheme)="onToggleTheme()"></app-toggle-theme>
+      <button class="text-xl cursor-not-allowed font-dutti search-icon focus:outline-none"></button>
+      <button
+        *ngIf="!loggedIn; else isLoggedIn"
+        class="text-xl font-dutti user-icon focus:outline-none"
+        (click)="onOpenLogin()"
+      ></button>
+      <ng-template #isLoggedIn>
+        <a class="text-xl font-dutti search-icon" [routerLink]="['/account']"></a>
+      </ng-template>
+      <a class="text-xl cursor-not-allowed font-dutti bag-icon"></a>
+      <button class="ma-hamb focus:outline-none" [class.is-open-menu]="mainSidebar" (click)="onToggleMainSidebar()">
+        <div class="ma-hamb-bar ma-hamb-bar__top"></div>
+        <div class="ma-hamb-bar ma-hamb-bar__middle"></div>
+        <div class="ma-hamb-bar ma-hamb-bar__bottom"></div>
+      </button>
+    </div>
+  </div>
+
+  <!-- screens > lg -->
+  <div class="hidden h-16 px-4 lg:flex lg:justify-between lg:items-center" *transloco="let t">
+    <nav class="space-x-6 group">
+      <a
+        class="font-bold border-black dark:border-gray-200 hover:border-b-2"
+        [routerLink]="['/starships']"
+        routerLinkActive="border-b-2 group-hover:border-b-0"
+      >
+        {{ t('STARSHIPS.TITLE') | uppercase }}
+      </a>
+      <a
+        class="font-bold border-black dark:border-gray-200 hover:border-b-2"
+        [routerLink]="['/films']"
+        routerLinkActive="border-b-2 group-hover:border-b-0"
+      >
+        {{ t('FILMS.TITLE') | uppercase }}
+      </a>
+      <a
+        class="font-bold border-black dark:border-gray-200 hover:border-b-2"
+        [routerLink]="['/people']"
+        routerLinkActive="border-b-2 group-hover:border-b-0"
+      >
+        {{ t('PEOPLE.TITLE') | uppercase }}
+      </a>
+    </nav>
+
+    <a class="text-2xl cursor-not-allowed font-dutti md-icon" [routerLink]="['/']"></a>
+
+    <div class="flex items-center justify-between space-x-6">
+      <app-toggle-theme [theme]="theme" (toggleTheme)="onToggleTheme()"></app-toggle-theme>
+      <a class="flex items-center space-x-1 cursor-not-allowed">
+        <i class="-mt-1 text-md font-dutti search-icon"></i>
+        <span>{{ t('MENU.SEARCH') }}</span>
+      </a>
+      <button *ngIf="!loggedIn; else isLoggedInBig" class="focus:outline-none" (click)="onOpenLogin()">
+        {{ t('MENU.LOGIN') }}
+      </button>
+      <ng-template #isLoggedInBig>
+        <a [routerLink]="['/account']">{{ t('MENU.MY_ACCOUNT') }}</a>
+      </ng-template>
+      <a class="cursor-not-allowed">{{ t('MENU.MY_BAG') }}</a>
+    </div>
+  </div>
+</header>

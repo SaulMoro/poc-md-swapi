@@ -1,9 +1,26 @@
-<div class="flex flex-col h-full min-h-screen bg-gray-50 dark:bg-gray-900 dark:text-gray-200">
-  <!-- header -->
-  <div class="flex flex-col justify-between flex-grow overflow-auto">
-    <main class="container flex-grow py-4 mx-auto">
+<div
+  *ngIf="sidebars$ | async as sidebars"
+  class="flex flex-col h-full min-h-screen bg-white dark:bg-gray-900 dark:text-gray-200"
+>
+  <app-header
+    [theme]="(theme$ | async) || 'light'"
+    [mainSidebar]="sidebars.main"
+    [loggedIn]="(loggedIn$ | async) || false"
+    (toggleTheme)="toggleTheme()"
+    (toggleMainSidebar)="toggleMainSidebar()"
+    (openLogin)="login()"
+  ></app-header>
+  <div class="flex flex-grow overflow-auto">
+    <app-main-sidebar
+      *ngIf="sidebars.main"
+      [loggedIn]="(loggedIn$ | async) || false"
+      (openLogin)="login()"
+      (itemSelected)="itemSelected()"
+    ></app-main-sidebar>
+    <main class="container py-4 mx-auto">
       <router-outlet></router-outlet>
     </main>
-    <!-- footer -->
   </div>
+
+  <!-- floating sidebars -->
 </div>

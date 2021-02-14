@@ -11,6 +11,17 @@ $md-font-path: '^assets/fonts/';
   font-style: normal;
 }
 
+.font-dutti {
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  display: inline-block;
+  -webkit-font-smoothing: antialiased;
+}
+
 @font-face {
   font-family: BasisGrotesque;
   src: url($md-font-path + 'BasisGrotesque-Light-Pro.eot');
