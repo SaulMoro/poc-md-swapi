@@ -29,7 +29,7 @@ export const uiReducer = createReducer(
     ...state,
     sidebars: { ...state.sidebars, main: !state.sidebars.main },
   })),
-  on(UiActions.selectItemOnMainSidebar, (state) => ({
+  on(UiActions.selectItemOnMainSidebar, UiActions.enterLargeBreakpointWithSidebarOpen, (state) => ({
     ...state,
     sidebars: { ...state.sidebars, main: false },
   })),

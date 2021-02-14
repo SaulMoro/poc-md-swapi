@@ -1,12 +1,15 @@
 import { Inject, Injectable } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { Store } from '@ngrx/store';
 import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
-import { tap } from 'rxjs/operators';
+import { filter, map, tap } from 'rxjs/operators';
 
 import * as UiActions from './ui.actions';
 import * as UiSelectors from './ui.selectors';
 import { THEME_KEY } from './helpers';
+
+const LG_BREAKPOINT = ['(min-width: 1024px)'];
 
 @Injectable()
 export class UiEffects {
@@ -23,5 +26,20 @@ export class UiEffects {
     { dispatch: false },
   );
 
-  constructor(private actions$: Actions, private store: Store, @Inject(DOCUMENT) private document: Document) {}
+  closeMainSidebarOnChangeScreenSize$ = createEffect(() =>
+    this.breakpointObserver.observe(LG_BREAKPOINT).pipe(
+      filter(({ matches }) => matches),
+      tap(console.log),
+      concatLatestFrom(() => this.store.select(UiSelectors.selectMainSidebar)),
+      filter(([, mainSidebar]) => mainSidebar),
+      map(() => UiActions.enterLargeBreakpointWithSidebarOpen()),
+    ),
+  );
+
+  constructor(
+    private actions$: Actions,
+    private store: Store,
+    private breakpointObserver: BreakpointObserver,
+    @Inject(DOCUMENT) private document: Document,
+  ) {}
 }

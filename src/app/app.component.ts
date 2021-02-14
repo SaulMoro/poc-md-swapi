@@ -1,13 +1,16 @@
 import { Component } from '@angular/core';
+
 import { Store } from '@ngrx/store';
 
 import { UiActions, UiSelectors } from '@md-starwars/core/ui';
+import { sidebarAnimation } from '@md-starwars/core/animations';
 import { AuthSelectors } from './core/auth';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  animations: [sidebarAnimation],
 })
 export class AppComponent {
   theme$ = this.store.select(UiSelectors.selectTheme);

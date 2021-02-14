@@ -1,5 +1,6 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LayoutModule as AngularCDKLayoutModule } from '@angular/cdk/layout';
 import { SvgIconsModule } from '@ngneat/svg-icon';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -35,6 +36,7 @@ import { AuthEffects, AuthTokenInterceptor } from './auth';
     !environment.production ? StoreDevtoolsModule.instrument() : [],
 
     // third party
+    AngularCDKLayoutModule,
     SvgIconsModule.forRoot({
       defaultSize: 'md',
       sizes: {
