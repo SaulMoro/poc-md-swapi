@@ -4,7 +4,7 @@ import { EMPTY } from 'rxjs';
 import { exhaustMap } from 'rxjs/operators';
 
 import { AuthService } from './auth.service';
-import { LoginRequest, LoginResponse, SignInRequest, SignInResponse } from '../models';
+import { AuthToken, LoginRequest, SignInRequest, User, UsersApiResponse } from '../models';
 
 describe('AuthService', () => {
   it('should be created', () => {
@@ -46,13 +46,13 @@ describe('AuthService', () => {
     service
       .signIn(signIn)
       .pipe(
-        exhaustMap((signInResponse: SignInResponse) => {
+        exhaustMap((signInResponse: UsersApiResponse<User>) => {
           expect(signInResponse).toBeTruthy();
           expect(signInResponse.code).toBe(201);
           return service.login(req);
         }),
       )
-      .subscribe((res: LoginResponse) => {
+      .subscribe((res: UsersApiResponse<AuthToken>) => {
         expect(res).toBeTruthy();
         expect(res.code).toBe(200);
         expect(res.message.Authorization).toBeTruthy();

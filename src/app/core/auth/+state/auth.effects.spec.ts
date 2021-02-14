@@ -218,6 +218,5 @@ function setup(actions$: Observable<Action>) {
   const authService = TestBed.inject(AuthService);
   const effects = TestBed.inject(AuthEffects);
   const metadata = getEffectsMetadata(effects);
-
   return { effects, metadata, router, authService };
 }
