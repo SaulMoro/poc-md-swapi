@@ -19,6 +19,7 @@
     "lib": ["es2018", "dom"],
     "paths": {
       "@md-starwars/environment": ["src/environments/environment.ts"],
+      "@md-starwars/mocks/*": ["src/mocks/*"],
       "@md-starwars/*": ["src/app/*"]
     }
   },
