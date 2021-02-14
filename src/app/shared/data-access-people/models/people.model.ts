@@ -1,5 +1,7 @@
 /* eslint-disable max-len */
 
+import { extractIdFromUrl } from '@md-starwars/shared/utils';
+
 export interface People {
   /** The name of this person. */
   name: string;
@@ -35,4 +37,4 @@ export interface People {
   edited: string;
 }
 
-export const selectPeopleId = ({ url }: People): number => +url.split('/').splice(-2)[0];
+export const selectPeopleId = ({ url }: People): number => extractIdFromUrl(url);

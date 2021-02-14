@@ -1,5 +1,7 @@
 /* eslint-disable max-len */
 
+import { extractIdFromUrl } from '@md-starwars/shared/utils';
+
 export interface Starship {
   /** The name of this starship. The common name, such as "Death Star". */
   name: string;
@@ -39,4 +41,4 @@ export interface Starship {
   edited: string;
 }
 
-export const selectStarshipId = ({ url }: Starship): number => +url.split('/').splice(-2)[0];
+export const selectStarshipId = ({ url }: Starship): number => extractIdFromUrl(url);

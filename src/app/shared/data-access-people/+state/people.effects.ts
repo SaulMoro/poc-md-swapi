@@ -1,14 +1,29 @@
 import { Injectable } from '@angular/core';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { Store } from '@ngrx/store';
+import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
 import { forkJoin, of } from 'rxjs';
-import { catchError, map, switchMap } from 'rxjs/operators';
+import { catchError, filter, map, switchMap } from 'rxjs/operators';
 
+import { StarshipsApiActions } from '@md-starwars/shared/data-access-starships';
+import { extractIdFromUrl } from '@md-starwars/shared/utils';
 import * as PeopleApiActions from './people-api.actions';
+import * as PeopleSelectors from './people.selectors';
 import { PeopleService } from '../services/people.service';
 
 @Injectable()
 export class PeopleEffects {
-  // TODO: Add effect to dispatch loadPeopleFromIdsStart on loadStarshipSuccess filtering already loaded people
+  loadPeopleFromIdsStart$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(StarshipsApiActions.loadStarshipSuccess),
+      concatLatestFrom(() => this.store.select(PeopleSelectors.selectPeopleEntities)),
+      map(([{ starship }, peopleEntities]) => {
+        const peopleIds = starship.pilots.map(extractIdFromUrl);
+        return peopleIds.filter((id) => !peopleEntities[id]);
+      }),
+      filter((peopleIds) => !!peopleIds.length),
+      map((peopleIds) => PeopleApiActions.loadPeopleFromIdsStart({ peopleIds })),
+    ),
+  );
 
   loadPeopleFromIds$ = createEffect(() =>
     this.actions$.pipe(
@@ -22,5 +37,5 @@ export class PeopleEffects {
     ),
   );
 
-  constructor(private actions$: Actions, private peopleService: PeopleService) {}
+  constructor(private actions$: Actions, private store: Store, private peopleService: PeopleService) {}
 }

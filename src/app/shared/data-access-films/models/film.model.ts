@@ -1,3 +1,5 @@
+import { extractIdFromUrl } from '@md-starwars/shared/utils';
+
 export interface Film {
   /** The title of this film. */
   title: string;
@@ -29,4 +31,4 @@ export interface Film {
   edited: string;
 }
 
-export const selectFilmId = ({ url }: Film): number => +url.split('/').splice(-2)[0];
+export const selectFilmId = ({ url }: Film): number => extractIdFromUrl(url);
