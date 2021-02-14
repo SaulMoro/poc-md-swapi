@@ -21,7 +21,9 @@ export const StarshipsHandlers = [
   // details
   rest.get(`${API_PATCH}:id/`, (req, res, ctx) => {
     const { id } = req.params;
-    const startship = Object.values(dataPaginated).find((pageData) => pageData.results.url.endsWith(`/${id}/`));
+    const [startship] = Object.values(dataPaginated).map((pageData) =>
+      (pageData as typeof pageOne | typeof pageTwo).results.find((ship) => ship.url.endsWith(`/${id}/`)),
+    );
 
     return startship
       ? res(ctx.status(200), ctx.json(startship))

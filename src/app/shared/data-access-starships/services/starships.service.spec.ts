@@ -3,6 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { EMPTY } from 'rxjs';
 
 import { pageTwo } from '@md-starwars/mocks/starships/page-two.data';
+import { ship } from '@md-starwars/mocks/starships/ship-2.data';
 import { StarshipsService } from './starships.service';
 
 describe('StarshipsService', () => {
@@ -63,10 +64,9 @@ describe('StarshipsService', () => {
     it('should get starship if exists', async (done) => {
       const service = setup();
 
-      service.getStarship(1).subscribe((res) => {
-        console.log(res);
+      service.getStarship(2).subscribe((res) => {
         expect(res).toBeTruthy();
-        expect(res.name).toBeTruthy();
+        expect(res.name).toEqual(ship.name);
         done();
       });
     });
