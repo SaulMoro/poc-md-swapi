@@ -1,5 +1,5 @@
 import { rest } from 'msw';
-import { LoginRequest, SignInRequest, LoginResponse, SignInResponse } from '@md-starwars/core/auth/models';
+import { AuthToken, LoginRequest, SignInRequest, User, UsersApiResponse } from '@md-starwars/core/auth/models';
 
 const API_PATCH = 'https://rest-api-slim-php.herokuapp.com';
 
@@ -23,7 +23,7 @@ export const UsersHandlers = [
         message: {
           Authorization: 'Bearer XQiOjE2MTMyMTc4ODIsImV4cCI6MTY',
         },
-      } as LoginResponse),
+      } as UsersApiResponse<AuthToken>),
     );
   }),
 
@@ -39,6 +39,9 @@ export const UsersHandlers = [
     }
 
     sessionStorage.setItem('is-signin', 'true');
-    return res(ctx.status(201), ctx.json({ code: 201, status: 'success', message: { name, email } } as SignInResponse));
+    return res(
+      ctx.status(201),
+      ctx.json({ code: 201, status: 'success', message: { name, email } } as UsersApiResponse<User>),
+    );
   }),
 ];
