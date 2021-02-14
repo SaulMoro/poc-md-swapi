@@ -29,7 +29,6 @@ export class UiEffects {
   closeMainSidebarOnChangeScreenSize$ = createEffect(() =>
     this.breakpointObserver.observe(LG_BREAKPOINT).pipe(
       filter(({ matches }) => matches),
-      tap(console.log),
       concatLatestFrom(() => this.store.select(UiSelectors.selectMainSidebar)),
       filter(([, mainSidebar]) => mainSidebar),
       map(() => UiActions.enterLargeBreakpointWithSidebarOpen()),
