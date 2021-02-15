@@ -5,7 +5,7 @@ import { RoleBasedPreloader, Role, AuthGuard, NoAuthGuard } from './core/auth';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'account',
+    redirectTo: 'starships',
     pathMatch: 'full',
   },
   {
