@@ -1,5 +1,5 @@
 <aside
-  class="fixed flex-col w-full h-full overflow-y-auto transition-opacity border-t-2 duration-600"
+  class="fixed flex-col w-full h-full overflow-hidden transition-opacity bg-white border-t-2 duration-600 dark:bg-gray-900"
   [ngClass]="{ 'visible ease-out opacity-100': display, 'invisible ease-in opacity-0': !display }"
   [@slideInOut]="display ? 'in' : 'out'"
   *transloco="let t"
@@ -9,7 +9,7 @@
       {{ t('MENU.LOGIN_SIGNIN') }}
     </button>
     <ng-template #isLoggedIn>
-      <a class="font-bold" [routerLink]="['/account']">t('MENU.MY_ACCOUNT')</a>
+      <a class="font-bold" [routerLink]="['/account']">{{ t('MENU.MY_ACCOUNT') }}</a>
     </ng-template>
   </div>
 

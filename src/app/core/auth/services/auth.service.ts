@@ -15,8 +15,18 @@ const API_PATCH = '/api/v1/users';
 export class AuthService {
   constructor(private http: HttpClient) {}
 
-  login(user: LoginRequest): Observable<UsersApiResponse<AuthToken>> {
-    return this.http.post<UsersApiResponse<AuthToken>>(`${environment.authUrl}/login`, user);
+  login(user: LoginRequest): Observable<UsersApiResponse<AuthToken & User>> {
+    return this.http.post<UsersApiResponse<AuthToken>>(`${environment.authUrl}/login`, user).pipe(
+      // mock roles of user by email
+      map((response) => ({
+        ...response,
+        message: {
+          ...response.message,
+          email: user.email,
+          roles: isAdmin(user.email) ? ['admin', 'client'] : ['client'],
+        },
+      })),
+    );
   }
 
   signIn(user: SignInRequest): Observable<UsersApiResponse<User>> {

@@ -35,7 +35,12 @@ export const authReducer = createReducer(
   })),
   on(AuthActions.logout, AuthActions.unauthorized, () => initialState),
 
-  on(AuthApiActions.loginSuccess, (state, { token }) => ({ ...state, token, loading: false })),
+  on(AuthApiActions.loginSuccess, (state, { user, token }) => ({
+    ...state,
+    user: { ...state.user, ...user },
+    token,
+    loading: false,
+  })),
   on(AuthApiActions.signInSuccess, (state, { user }) => ({ ...state, user, loading: false })),
 
   on(AuthApiActions.loginFailure, AuthApiActions.signInFailure, (state, { error }) => ({

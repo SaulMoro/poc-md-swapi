@@ -65,8 +65,9 @@ describe('Auth Reducer', () => {
   });
 
   it('should set token and loading false on login success', () => {
+    const user = { email: 'test@test.com' };
     const token = { Authorization: 'test' };
-    const action = AuthApiActions.loginSuccess({ token });
+    const action = AuthApiActions.loginSuccess({ user, token });
     const state = authReducer({ ...initialState, loading: true }, action);
 
     expect(state.loading).toBe(false);

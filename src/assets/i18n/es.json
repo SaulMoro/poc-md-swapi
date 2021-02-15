@@ -33,6 +33,18 @@
       "COMMERCIAL": "Quiero recibir novedades y comunicaciones comerciales personalizadas de Massimo Dutti a través del email y otros medios"
     }
   },
+  "ACCOUNT": {
+    "TITLE": "Mi cuenta",
+    "WELCOME": "Hola, <b>{{ name }}</b>",
+    "LOGOUT": "Cerrar sesión",
+    "YOUR_DATA": "Tus datos",
+    "LEGAL": "En MASSIMO DUTTI nos tomamos muy en serio tu privacidad y estamos comprometidos con la protección de tus datos personales. Conoce más sobre de cómo cuidamos y usamos tus datos en nuestra Política de privacidad.",
+    "FIELDS": {
+      "NAME": "Nombre y Apellidos",
+      "EMAIL": "E-mail",
+      "ROLE": "Roles"
+    }
+  },
   "MENU": {
     "INDEX": "Inicio",
     "SEARCH": "Buscar",
