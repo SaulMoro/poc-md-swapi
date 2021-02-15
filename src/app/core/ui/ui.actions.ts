@@ -9,4 +9,5 @@ export const enterLargeBreakpointWithSidebarOpen = createAction(
 );
 
 export const openLogin = createAction('[App Page] Open Login');
-export const closeLoginSidebar = createAction('[App Page] Close Login Sidebar');
+
+export const closeFloatingSidebar = createAction('[App Page] Close Floating Sidebar');

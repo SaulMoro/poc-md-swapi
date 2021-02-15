@@ -38,7 +38,7 @@ export const uiReducer = createReducer(
     ...state,
     sidebars: { ...state.sidebars, login: true },
   })),
-  on(UiActions.closeLoginSidebar, AuthApiActions.loginSuccess, (state) => ({
+  on(UiActions.closeFloatingSidebar, AuthApiActions.loginSuccess, (state) => ({
     ...state,
     sidebars: { ...state.sidebars, login: false },
   })),

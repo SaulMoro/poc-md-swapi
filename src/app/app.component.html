@@ -11,22 +11,20 @@
     (openLogin)="login()"
   ></app-header>
   <div class="flex flex-grow overflow-auto">
-    <div
-      class="fixed block w-full h-full overflow-hidden transition-opacity duration-600"
-      [ngClass]="{ 'opacity-100': sidebars.main, 'opacity-0': !sidebars.main }"
-      [@slideInOut]="sidebars.main ? 'in' : 'out'"
-    >
-      <app-main-sidebar
-        [loggedIn]="(loggedIn$ | async) || false"
-        (openLogin)="login()"
-        (itemSelected)="itemSelected()"
-      ></app-main-sidebar>
-    </div>
+    <app-main-sidebar
+      [display]="sidebars.main"
+      [loggedIn]="(loggedIn$ | async) || false"
+      (openLogin)="login()"
+      (itemSelected)="itemSelected()"
+    ></app-main-sidebar>
 
     <main class="container py-4 mx-auto">
       <router-outlet></router-outlet>
     </main>
   </div>
 
-  <!-- floating sidebars -->
+  <app-floating-sidebar [display]="sidebars.login" (closeSidebar)="closeFloatingSidebar()">
+    <!-- Lazy loaded components -->
+    <ng-container #floatingSidebarContainer></ng-container>
+  </app-floating-sidebar>
 </div>

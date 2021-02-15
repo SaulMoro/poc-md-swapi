@@ -1,4 +1,9 @@
-<aside class="fixed flex flex-col w-full h-full border-t-2" *transloco="let t">
+<aside
+  class="fixed flex-col w-full h-full overflow-y-auto transition-opacity border-t-2 duration-600"
+  [ngClass]="{ 'visible ease-out opacity-100': display, 'invisible ease-in opacity-0': !display }"
+  [@slideInOut]="display ? 'in' : 'out'"
+  *transloco="let t"
+>
   <div class="py-4 text-sm pl-14">
     <button *ngIf="!loggedIn; else isLoggedIn" class="font-bold focus:outline-none" (click)="onOpenLogin()">
       {{ t('MENU.LOGIN_SIGNIN') }}

@@ -1,16 +1,15 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 
 import { UiActions, UiSelectors } from '@md-starwars/core/ui';
-import { sidebarAnimation } from '@md-starwars/core/animations';
 import { AuthSelectors } from './core/auth';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  animations: [sidebarAnimation],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
   theme$ = this.store.select(UiSelectors.selectTheme);
@@ -31,11 +30,11 @@ export class AppComponent {
     this.store.dispatch(UiActions.selectItemOnMainSidebar());
   }
 
-  login() {
-    this.store.dispatch(UiActions.openLogin());
+  closeFloatingSidebar() {
+    this.store.dispatch(UiActions.closeFloatingSidebar());
   }
 
-  closeLogin() {
-    this.store.dispatch(UiActions.closeLoginSidebar());
+  login() {
+    this.store.dispatch(UiActions.openLogin());
   }
 }
