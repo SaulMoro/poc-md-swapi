@@ -20,6 +20,10 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data: { preloadIfRole: 'client' as Role },
   },
+  {
+    path: 'starships',
+    loadChildren: () => import('./features/starships/starships.module').then((m) => m.StarshipsModule),
+  },
 ];
 
 @NgModule({
