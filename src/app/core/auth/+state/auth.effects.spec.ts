@@ -64,7 +64,9 @@ describe('AuthEffects', () => {
         const source = cold('a', { a: login });
         const actions = new Actions(source);
         const { effects, authService } = setup(actions);
-        jest.spyOn(authService, 'login').mockReturnValue(of({ status: 'success', message: { Authorization: 'test' } }));
+        jest
+          .spyOn(authService, 'login')
+          .mockReturnValue(of({ status: 'success', message: { Authorization: 'test', email: user.email } }));
 
         effects.login$.subscribe((action) => {
           expect(action.type).toBe(AuthApiActions.loginSuccess.type);
