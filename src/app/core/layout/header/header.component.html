@@ -14,7 +14,7 @@
         (click)="onOpenLogin()"
       ></button>
       <ng-template #isLoggedIn>
-        <a class="text-xl font-dutti search-icon" [routerLink]="['/account']"></a>
+        <a class="text-xl font-dutti user-icon" [routerLink]="['/account']"></a>
       </ng-template>
       <a class="text-xl cursor-not-allowed font-dutti bag-icon"></a>
       <button class="ma-hamb focus:outline-none" [class.is-open-menu]="mainSidebar" (click)="onToggleMainSidebar()">
@@ -51,7 +51,7 @@
       </a>
     </nav>
 
-    <a class="text-2xl cursor-not-allowed font-dutti md-icon" [routerLink]="['/']"></a>
+    <a class="text-2xl font-dutti md-icon" [routerLink]="['/']"></a>
 
     <div class="flex items-center justify-between space-x-6">
       <app-toggle-theme [theme]="theme" (toggleTheme)="onToggleTheme()"></app-toggle-theme>

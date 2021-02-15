@@ -16,7 +16,12 @@ export class AuthEffects {
       ofType(AuthActions.login),
       concatMap(({ user }) =>
         this.authService.login(user).pipe(
-          map(({ message }) => AuthApiActions.loginSuccess({ token: message })),
+          map(({ message }) =>
+            AuthApiActions.loginSuccess({
+              user: { email: message.email, roles: message.roles },
+              token: { Authorization: message.Authorization },
+            }),
+          ),
           catchError((error: unknown) =>
             of(AuthApiActions.loginFailure({ error: (error as UsersApiResponse<string>).message })),
           ),

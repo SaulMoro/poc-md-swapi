@@ -32,7 +32,8 @@
             "scripts": [],
             "customWebpackConfig": {
               "path": "webpack.config.js"
-            }
+            },
+            "allowedCommonJsDependencies": ["lazysizes/plugins/unveilhooks/ls.unveilhooks"]
           },
           "configurations": {
             "production": {

@@ -36,17 +36,17 @@ describe('Auth Selectors', () => {
 
   it('should select Role', () => {
     const norole = { email: 'test@test.com' };
-    const role: User = { email: 'admin@test.com', roles: ['admin', 'user'] };
+    const role: User = { email: 'admin@test.com', roles: ['admin', 'client'] };
     const stateNoRole = setup({ user: norole });
     const stateRole = setup({ user: role });
 
-    expect(AuthSelectors.selectRoles(stateNoRole)).toEqual([]);
+    expect(AuthSelectors.selectRoles(stateNoRole)).toEqual(['user']);
     expect(AuthSelectors.selectRoles(stateRole)).toBeTruthy();
   });
 
   it('should select Is Admin', () => {
-    const client: User = { email: 'client@test.com', roles: ['user'] };
-    const admin: User = { email: 'admin@test.com', roles: ['admin', 'user'] };
+    const client: User = { email: 'client@test.com', roles: ['client'] };
+    const admin: User = { email: 'admin@test.com', roles: ['admin', 'client'] };
     const stateClient = setup({ user: client });
     const stateAdmin = setup({ user: admin });
 
