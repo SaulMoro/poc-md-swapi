@@ -24,7 +24,7 @@ export class AuthService {
       // mock roles of user by email
       map((response) => ({
         ...response,
-        message: { ...response.message, roles: isAdmin(response.message.email) ? ['admin', 'user'] : ['user'] },
+        message: { ...response.message, roles: isAdmin(response.message.email) ? ['admin', 'client'] : ['client'] },
       })),
     );
   }

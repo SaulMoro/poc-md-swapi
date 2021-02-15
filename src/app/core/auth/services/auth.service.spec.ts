@@ -105,7 +105,7 @@ describe('AuthService', () => {
       expect(res.message).toBeTruthy();
       expect(res.message.name).toBe(req.name);
       expect(res.message.email).toBe(req.email);
-      expect(res.message.roles).toEqual(['user']);
+      expect(res.message.roles).toEqual(['client']);
       done();
     });
   });
@@ -120,7 +120,7 @@ describe('AuthService', () => {
       expect(res.message).toBeTruthy();
       expect(res.message.name).toBe(req.name);
       expect(res.message.email).toBe(req.email);
-      expect(res.message.roles).toEqual(['admin', 'user']);
+      expect(res.message.roles).toEqual(['admin', 'client']);
       done();
     });
   });
