@@ -1,24 +1,32 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
+import { provideMockStore, MockStore } from '@ngrx/store/testing';
+import { render } from '@testing-library/angular';
 
+import { AuthSelectors } from '@md-starwars/core/auth';
 import { LazyLoginComponent } from './lazy-login.component';
 
-describe('LazyLoginComponent', () => {
-  let component: LazyLoginComponent;
-  let fixture: ComponentFixture<LazyLoginComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [LazyLoginComponent],
-    }).compileComponents();
+test('works with provideMockStore', async () => {
+  await render(LazyLoginComponent, {
+    providers: [
+      provideMockStore({
+        selectors: [
+          {
+            selector: AuthSelectors.selectUser,
+            value: null,
+          },
+          {
+            selector: AuthSelectors.selectLoading,
+            value: false,
+          },
+        ],
+      }),
+    ],
   });
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(LazyLoginComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+  const store = TestBed.inject(MockStore);
+  store.dispatch = jest.fn();
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+  /* fireEvent.click(screen.getByText(/seven/i));
+
+  expect(store.dispatch).toBeCalledWith({ type: '[Item List] send', item: 'Seven' }); */
 });

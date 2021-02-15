@@ -21,7 +21,12 @@ export const initialState: AuthState = {
 
 export const authReducer = createReducer(
   initialState,
-  on(AuthActions.login, () => ({ ...initialState, loading: true })),
+  on(AuthActions.enterLoginSidebar, AuthActions.enterSignInPage, (state) => ({
+    ...state,
+    error: null,
+  })),
+
+  on(AuthActions.login, (state) => ({ ...state, token: null, loading: true, error: null })),
   on(AuthActions.signIn, (state, { user: { email, name } }) => ({
     ...state,
     user: { email, name }, // Skip save password
@@ -32,6 +37,7 @@ export const authReducer = createReducer(
 
   on(AuthApiActions.loginSuccess, (state, { token }) => ({ ...state, token, loading: false })),
   on(AuthApiActions.signInSuccess, (state, { user }) => ({ ...state, user, loading: false })),
+
   on(AuthApiActions.loginFailure, AuthApiActions.signInFailure, (state, { error }) => ({
     ...state,
     error,

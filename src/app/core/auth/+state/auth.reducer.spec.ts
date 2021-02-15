@@ -10,6 +10,22 @@ describe('Auth Reducer', () => {
     expect(state).toBe(initialState);
   });
 
+  it('should error null on enter login sidebar', () => {
+    const action = AuthActions.enterLoginSidebar();
+    const state = authReducer(initialState, action);
+
+    expect(state.loading).toBe(false);
+    expect(state.error).toBe(null);
+  });
+
+  it('should error null on enter sign in page', () => {
+    const action = AuthActions.enterSignInPage();
+    const state = authReducer(initialState, action);
+
+    expect(state.loading).toBe(false);
+    expect(state.error).toBe(null);
+  });
+
   it('should initial state and loading on login', () => {
     const user = { email: 'test@test.com', password: 'test' };
     const action = AuthActions.login({ user });

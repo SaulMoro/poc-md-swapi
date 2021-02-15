@@ -9,13 +9,14 @@ export const UsersHandlers = [
     const { email, password } = req.body as LoginRequest;
 
     if (!email || !password) {
-      return res(ctx.status(400), ctx.json({ status: 'error' }));
+      return res(ctx.delay(2000), ctx.status(400), ctx.json({ status: 'error' }));
     }
     if (!sessionStorage.getItem('is-signin')) {
-      return res(ctx.status(400), ctx.json({ status: 'error', message: 'Login failed.' }));
+      return res(ctx.delay(2000), ctx.status(400), ctx.json({ status: 'error', message: 'Login failed.' }));
     }
 
     return res(
+      ctx.delay(),
       ctx.status(200),
       ctx.json({
         code: 200,
@@ -32,14 +33,15 @@ export const UsersHandlers = [
     const { email, password, name } = req.body as SignInRequest;
 
     if (!email || !password || !name) {
-      return res(ctx.status(400), ctx.json({ status: 'error' }));
+      return res(ctx.delay(2000), ctx.status(400), ctx.json({ status: 'error' }));
     }
     if (email === 'admin@admin.com') {
-      return res(ctx.status(400), ctx.json({ status: 'error', message: 'Email already exists.' }));
+      return res(ctx.delay(2000), ctx.status(400), ctx.json({ status: 'error', message: 'Email already exists.' }));
     }
 
     sessionStorage.setItem('is-signin', 'true');
     return res(
+      ctx.delay(),
       ctx.status(201),
       ctx.json({ code: 201, status: 'success', message: { name, email } } as UsersApiResponse<User>),
     );

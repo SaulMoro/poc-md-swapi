@@ -12,7 +12,7 @@ export class FloatingSidebarComponent {
   @Input() display = false;
   @Output() closeSidebar = new EventEmitter();
 
-  close() {
+  close(): void {
     this.closeSidebar.emit();
   }
 }

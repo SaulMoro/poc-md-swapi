@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from '@md-starwars/core/core.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { UiFormsModule } from './shared/ui-forms';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { AppRoutingModule } from './app-routing.module';
 
     // app
     AppRoutingModule,
+    UiFormsModule,
   ],
   declarations: [AppComponent],
   bootstrap: [AppComponent],

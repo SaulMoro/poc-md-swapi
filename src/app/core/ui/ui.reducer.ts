@@ -34,11 +34,17 @@ export const uiReducer = createReducer(
     sidebars: { ...state.sidebars, main: false },
   })),
 
-  on(UiActions.openLogin, AuthApiActions.signInSuccess, AuthActions.unauthorized, (state) => ({
-    ...state,
-    sidebars: { ...state.sidebars, login: true },
-  })),
-  on(UiActions.closeFloatingSidebar, AuthApiActions.loginSuccess, (state) => ({
+  on(
+    UiActions.openLogin,
+    AuthApiActions.signInSuccess,
+    AuthActions.unauthorized,
+    AuthActions.loginOnSignInPage,
+    (state) => ({
+      ...state,
+      sidebars: { ...state.sidebars, login: true },
+    }),
+  ),
+  on(UiActions.closeFloatingSidebar, AuthApiActions.loginSuccess, AuthActions.enterSignInPage, (state) => ({
     ...state,
     sidebars: { ...state.sidebars, login: false },
   })),

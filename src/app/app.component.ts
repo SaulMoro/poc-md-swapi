@@ -1,10 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  ComponentFactoryResolver,
-  ViewChild,
-  ViewContainerRef,
-} from '@angular/core';
+import { Component, ComponentFactoryResolver, ViewChild, ViewContainerRef } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { EMPTY } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -16,7 +10,6 @@ import { AuthSelectors } from './core/auth';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
   theme$ = this.store.select(UiSelectors.selectTheme);
@@ -29,28 +22,28 @@ export class AppComponent {
 
   constructor(private store: Store, private factoryResolver: ComponentFactoryResolver) {}
 
-  toggleTheme() {
+  toggleTheme(): void {
     this.store.dispatch(UiActions.toggleTheme());
   }
 
-  toggleMainSidebar() {
+  toggleMainSidebar(): void {
     this.store.dispatch(UiActions.toggleMainSidebar());
   }
 
-  itemSelected() {
+  itemSelected(): void {
     this.store.dispatch(UiActions.selectItemOnMainSidebar());
   }
 
-  closeFloatingSidebar() {
+  closeFloatingSidebar(): void {
     this.store.dispatch(UiActions.closeFloatingSidebar());
     this.floatingSidebarContainer.clear();
   }
 
-  login() {
+  login(): void {
     this.store.dispatch(UiActions.openLogin());
   }
 
-  private async _lazyLoadLogin() {
+  private async _lazyLoadLogin(): Promise<void> {
     const { LazyLoginComponent } = await import(
       /* webpackPrefetch: true */
       '@md-starwars/features/login/lazy-containers/lazy-login/lazy-login.component'

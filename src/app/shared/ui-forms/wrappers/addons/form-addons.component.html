@@ -5,6 +5,7 @@
   (click)="addonLeftClick($event)"
 >
   <i [ngClass]="to.addonLeft.class" *ngIf="to.addonLeft.class"></i>
+  <svg-icon *ngIf="to.addonLeft.icon" [ngClass]="to.addonLeft.iconClass" [key]="to.addonLeft.icon"></svg-icon>
   <span *ngIf="to.addonLeft.text">{{ to.addonLeft.text }}</span>
 </div>
 
@@ -17,5 +18,6 @@
   (click)="addonRightClick($event)"
 >
   <i [ngClass]="to.addonRight.class" *ngIf="to.addonRight.class"></i>
+  <svg-icon *ngIf="to.addonRight.icon" [ngClass]="to.addonRight.iconClass" [key]="to.addonRight.icon"></svg-icon>
   <span *ngIf="to.addonRight.text">{{ to.addonRight.text }}</span>
 </div>
