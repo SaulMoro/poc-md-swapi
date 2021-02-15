@@ -38,12 +38,10 @@ function setup() {
   return {
     get router() {
       initializeRootFixture();
-
       return TestBed.inject(Router);
     },
     run<TResult>(task: () => TResult) {
       initializeRootFixture();
-
       return rootFixture.ngZone == null ? task() : rootFixture.ngZone.run(task);
     },
   };

@@ -1,4 +1,5 @@
-export type Roles = ['admin', 'user'] | ['user'] | [];
+export type Role = 'admin' | 'client' | 'user';
+export type Roles = ['admin', 'client'] | ['client'] | ['user'];
 
 export interface User {
   name?: string;

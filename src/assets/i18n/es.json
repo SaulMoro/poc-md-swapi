@@ -13,12 +13,37 @@
   "LOGIN": {
     "TITLE": "Iniciar Sesión",
     "DESCRIPTION": "Introduzca su correo y contraseña para acceder",
+    "BAD_CREDENTIALS": "La combinación de usuario y contraseña no es correcta",
+    "FORGOT_PASSWORD": "¿Ha olvidado su contraseña?",
     "FIELDS": {
       "EMAIL": "E-mail",
       "PASSWORD": "Contraseña"
     },
     "SIGN_IN": "¿Aún no tienes una cuenta?",
     "SIGN_IN_LINK": "Regístrate"
+  },
+  "SIGN_IN": {
+    "TITLE": "Crear Cuenta",
+    "FIELDS": {
+      "NAME": "Nombre y Apellidos",
+      "EMAIL": "E-mail",
+      "PASSWORD": "Contraseña",
+      "COMPANY": "Empresa",
+      "LEGAL": "He podido leer y entiendo la información sobre el uso de mis datos personales explicada en la Política de privacidad.",
+      "COMMERCIAL": "Quiero recibir novedades y comunicaciones comerciales personalizadas de Massimo Dutti a través del email y otros medios"
+    }
+  },
+  "ACCOUNT": {
+    "TITLE": "Mi cuenta",
+    "WELCOME": "Hola, <b>{{ name }}</b>",
+    "LOGOUT": "Cerrar sesión",
+    "YOUR_DATA": "Tus datos",
+    "LEGAL": "En MASSIMO DUTTI nos tomamos muy en serio tu privacidad y estamos comprometidos con la protección de tus datos personales. Conoce más sobre de cómo cuidamos y usamos tus datos en nuestra Política de privacidad.",
+    "FIELDS": {
+      "NAME": "Nombre y Apellidos",
+      "EMAIL": "E-mail",
+      "ROLE": "Roles"
+    }
   },
   "MENU": {
     "INDEX": "Inicio",

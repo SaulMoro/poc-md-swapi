@@ -8,8 +8,9 @@ import { icons } from './layout.icons';
 import { HeaderComponent } from './header/header.component';
 import { ToggleThemeComponent } from './header/toggle-theme/toggle-theme.component';
 import { MainSidebarComponent } from './main-sidebar/main-sidebar.component';
+import { FloatingSidebarComponent } from './floating-sidebar/floating-sidebar.component';
 
-const EXPORTED_DECLARATIONS = [HeaderComponent, MainSidebarComponent];
+const EXPORTED_DECLARATIONS = [HeaderComponent, MainSidebarComponent, FloatingSidebarComponent];
 
 @NgModule({
   declarations: [...EXPORTED_DECLARATIONS, ToggleThemeComponent],

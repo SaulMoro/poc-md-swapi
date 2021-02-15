@@ -1,11 +1,34 @@
-import { login, logout, signIn, unauthorized } from './auth.actions';
+import {
+  enterLoginSidebar,
+  enterSignInPage,
+  login,
+  loginOnSignInPage,
+  logout,
+  signIn,
+  unauthorized,
+} from './auth.actions';
 
 describe('Auth Actions', () => {
+  it('should create Enter Login Sidebar action', () => {
+    const action = enterLoginSidebar();
+    expect(action.type).toEqual('[Login Sidebar] Enter Login Sidebar');
+  });
+
   it('should create Login action', () => {
     const action = login({ user: { email: 'test@test.com', password: 'test' } });
-    expect(action.type).toEqual('[Login Page] Login');
+    expect(action.type).toEqual('[Login Sidebar] Login');
     expect(action.user.email).toEqual('test@test.com');
     expect(action.user.password).toEqual('test');
+  });
+
+  it('should create Enter Sign In Page action', () => {
+    const action = enterSignInPage();
+    expect(action.type).toEqual('[SignIn Page] Enter Sign In Page');
+  });
+
+  it('should create Click Login On Sign In Page action', () => {
+    const action = loginOnSignInPage();
+    expect(action.type).toEqual('[SignIn Page] Click Login On Sign In Page');
   });
 
   it('should create Sign In action', () => {

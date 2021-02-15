@@ -29,16 +29,22 @@ export const uiReducer = createReducer(
     ...state,
     sidebars: { ...state.sidebars, main: !state.sidebars.main },
   })),
-  on(UiActions.selectItemOnMainSidebar, (state) => ({
+  on(UiActions.selectItemOnMainSidebar, UiActions.enterLargeBreakpointWithSidebarOpen, (state) => ({
     ...state,
     sidebars: { ...state.sidebars, main: false },
   })),
 
-  on(UiActions.openLogin, AuthApiActions.signInSuccess, AuthActions.unauthorized, (state) => ({
-    ...state,
-    sidebars: { ...state.sidebars, login: true },
-  })),
-  on(UiActions.closeLoginSidebar, AuthApiActions.loginSuccess, (state) => ({
+  on(
+    UiActions.openLogin,
+    AuthApiActions.signInSuccess,
+    AuthActions.unauthorized,
+    AuthActions.loginOnSignInPage,
+    (state) => ({
+      ...state,
+      sidebars: { ...state.sidebars, login: true },
+    }),
+  ),
+  on(UiActions.closeFloatingSidebar, AuthApiActions.loginSuccess, AuthActions.enterSignInPage, (state) => ({
     ...state,
     sidebars: { ...state.sidebars, login: false },
   })),

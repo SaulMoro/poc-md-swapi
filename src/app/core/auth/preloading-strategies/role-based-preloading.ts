@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
 import { concatMap } from 'rxjs/operators';
 
-import { selectRoles } from './+state/auth.selectors';
+import { selectRoles } from '../+state/auth.selectors';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +13,7 @@ export class RoleBasedPreloader implements PreloadingStrategy {
   constructor(private store: Store) {}
 
   preload(route: Route, load: () => Observable<any>): Observable<any> {
-    const requiredRole = route.data && route.data['requiredRole'];
+    const requiredRole = route.data?.['preloadIfRole'];
 
     if (requiredRole) {
       return this.store.select(selectRoles).pipe(
