@@ -12,8 +12,9 @@ import { AuthSelectors } from './core/auth';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  theme$ = this.store.select(UiSelectors.selectTheme);
   loggedIn$ = this.store.select(AuthSelectors.selectAuthenticated);
+  theme$ = this.store.select(UiSelectors.selectTheme);
+  cookiesBanner$ = this.store.select(UiSelectors.showCookiesBanner);
   sidebars$ = this.store
     .select(UiSelectors.selectSidebars)
     .pipe(tap(({ login }) => (login ? this._lazyLoadLogin() : EMPTY)));
@@ -41,6 +42,10 @@ export class AppComponent {
 
   login(): void {
     this.store.dispatch(UiActions.openLogin());
+  }
+
+  dismissCookiesBanner(): void {
+    this.store.dispatch(UiActions.dismissCookieBanner());
   }
 
   private async _lazyLoadLogin(): Promise<void> {

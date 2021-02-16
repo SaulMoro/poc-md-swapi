@@ -60,7 +60,7 @@
     "LOGIN_SIGNIN": "Iniciar sesión / Registrarse"
   },
   "MESSAGES": {
-    "ONLY_ONE_TIME": "Este mensaje solo se mostrará la primera vez, una vez descartado no se vuelve a mostrar"
+    "COOKIES_BANNER": "Este mensaje solo se mostrará la primera vez, una vez descartado no se vuelve a mostrar. Por ejemplo, el banner de cookies."
   },
   "BUTTONS": {
     "ACCEPT_DEFAULT": "Aceptar",
