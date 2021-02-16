@@ -1,0 +1,21 @@
+<div
+  *ngIf="starships$ | async as starships"
+  class="container grid gap-6 px-6 pt-2 mx-auto lg:grid-cols-2 xl:grid-cols-3"
+  infiniteScroll
+  [infiniteScrollDistance]="2"
+  [infiniteScrollContainer]="'main'"
+  [fromRoot]="true"
+  (scrolled)="onScrolled()"
+>
+  <ng-container *ngIf="starships.length; else loading">
+    <a *ngFor="let starship of starships; trackBy: trackByFn" [routerLink]="['/starships', getStarshipId(starship)]">
+      <app-starship-item-list [starship]="starship"></app-starship-item-list>
+    </a>
+  </ng-container>
+  <ng-template #loading>
+    <app-starship-item-list
+      *ngFor="let item of [].constructor(10); trackBy: trackByFn"
+      [starship]="null"
+    ></app-starship-item-list>
+  </ng-template>
+</div>

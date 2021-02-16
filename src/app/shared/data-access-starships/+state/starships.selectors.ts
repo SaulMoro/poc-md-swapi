@@ -18,9 +18,10 @@ export const selectStarshipIds = createSelector(selectStarshipsState, (state: St
 export const selectDataState = createSelector(selectStarshipsState, (state: StarshipsState) => state?.dataState);
 export const selectLoading = createSelector(selectDataState, (state: DataState) => isLoadingOrRefreshing(state));
 
+export const selectCurrentPage = createSelector(selectStarshipsState, (state: StarshipsState) => +state?.currentPage);
 export const selectTotalStarships = createSelector(
   selectStarshipsState,
-  (state: StarshipsState) => state?.totalStarships,
+  (state: StarshipsState) => +state?.totalStarships,
 );
 export const selectStarshipsTotalPages = createSelector(selectTotalStarships, (totalStarships: number) =>
   Math.ceil(totalStarships / STARSHIPS_PER_PAGE),
@@ -38,10 +39,6 @@ export const selectExpirationOfPage = createSelector(
 export const selectLoadedDetailsExpiration = createSelector(
   selectStarshipsState,
   (state: StarshipsState) => state?.loadedDetailsExpiration,
-);
-
-export const selectCurrentPage = createSelector(RouterSelectors.selectCurrentPage, (page: string | undefined): number =>
-  page ? +page : 1,
 );
 
 export const selectSelectedStarshipId = createSelector(RouterSelectors.selectParamId, (id): number => Number(id));

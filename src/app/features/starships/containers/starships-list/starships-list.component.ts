@@ -1,0 +1,39 @@
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Store } from '@ngrx/store';
+
+import {
+  selectStarshipId,
+  Starship,
+  StarshipsActions,
+  StarshipsSelectors,
+} from '@md-starwars/shared/data-access-starships';
+
+@Component({
+  selector: 'app-starships-list',
+  templateUrl: './starships-list.component.html',
+  styleUrls: ['./starships-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class StarshipsListComponent implements OnInit {
+  loading$ = this.store.select(StarshipsSelectors.selectLoading);
+  starships$ = this.store.select(StarshipsSelectors.selectAllStarships);
+  totalStarships$ = this.store.select(StarshipsSelectors.selectTotalStarships);
+
+  constructor(private store: Store) {}
+
+  ngOnInit(): void {
+    this.store.dispatch(StarshipsActions.enterStarshipsPage());
+  }
+
+  onScrolled(): void {
+    this.store.dispatch(StarshipsActions.scrollToNextStarshipsPage());
+  }
+
+  trackByFn(index: number): number {
+    return index;
+  }
+
+  getStarshipId(starship: Starship): number {
+    return selectStarshipId(starship);
+  }
+}

@@ -1,0 +1,40 @@
+<section
+  class="h-full overflow-hidden transition-colors duration-200 bg-white rounded-lg shadow-xl hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600"
+>
+  <img
+    *ngIf="starship; else loadingStarship"
+    lazyImg
+    class="w-full h-56"
+    [data-src]="getImg(starship)"
+    [alt]="starship.name"
+    onerror="this.src='./assets/img/errorImg.svg';"
+  />
+  <ng-template #loadingStarship>
+    <div class="w-full h-56 delay-200 bg-gray-300 animate-pulse"></div>
+  </ng-template>
+
+  <div class="p-4">
+    <div class="flex items-center justify-between">
+      <div>
+        <p
+          class="block text-3xl text-gray-900 dark:text-gray-50"
+          [ngClass]="{ 'w-48 h-6 delay-200 bg-gray-300 animate-pulse': !starship }"
+        >
+          {{ starship?.name }}
+        </p>
+        <p
+          class="block text-gray-700 dark:text-gray-300"
+          [ngClass]="{ 'h-4 mt-2 delay-200 bg-gray-300 w-28 animate-pulse': !starship }"
+        >
+          {{ starship?.model }}
+        </p>
+      </div>
+      <div class="flex items-center space-x-2 text-xs text-gray-600 dark:text-gray-300">
+        <svg-icon class="-mt-1" key="usergroup" size="xs"></svg-icon>
+        <span [ngClass]="{ 'w-10 h-4 -mt-1 delay-200 bg-gray-300 animate-pulse': !starship }">{{
+          starship?.passengers
+        }}</span>
+      </div>
+    </div>
+  </div>
+</section>

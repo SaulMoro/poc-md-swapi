@@ -1,5 +1,5 @@
 <ng-container *transloco="let t">
-  <section class="grid w-full h-full grid-cols-1" *ngIf="user$ | async as user">
+  <section class="flex flex-col w-full h-full" *ngIf="user$ | async as user">
     <div class="pb-2 border-b-2">
       <div class="container flex justify-between pl-10 pr-5 mx-auto sm:px-2">
         <h1 class="font-medium">{{ t('ACCOUNT.TITLE') }}</h1>

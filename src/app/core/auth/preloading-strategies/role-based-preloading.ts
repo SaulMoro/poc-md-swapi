@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { PreloadingStrategy, Route } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
-import { concatMap } from 'rxjs/operators';
+import { concatMap, take } from 'rxjs/operators';
 
 import { selectRoles } from '../+state/auth.selectors';
 
@@ -17,6 +17,7 @@ export class RoleBasedPreloader implements PreloadingStrategy {
 
     if (requiredRole) {
       return this.store.select(selectRoles).pipe(
+        take(1),
         concatMap((roles) => {
           if (roles.some((r) => r === requiredRole)) {
             // The user has the required role, load the module

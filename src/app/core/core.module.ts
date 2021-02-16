@@ -22,11 +22,8 @@ import { AuthEffects, AuthTokenInterceptor } from './auth';
     // ngrx
     StoreModule.forRoot(reducers, {
       runtimeChecks: {
-        strictStateImmutability: true,
         strictActionImmutability: true,
-        strictStateSerializability: true,
-        strictActionSerializability: true,
-        strictActionTypeUniqueness: true,
+        strictStateImmutability: true,
       },
       metaReducers: [localStorageSyncMetaReducer],
     }),

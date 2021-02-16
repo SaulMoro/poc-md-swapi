@@ -15,7 +15,9 @@ export const StarshipsHandlers = [
     const page = req.url.searchParams.get('page');
     const pageData = page ? dataPaginated[page] : pageOne;
 
-    return pageData ? res(ctx.status(200), ctx.json(pageData)) : res(ctx.status(404), ctx.json({ error: 'not found' }));
+    return pageData
+      ? res(ctx.delay(1500), ctx.status(200), ctx.json(pageData))
+      : res(ctx.delay(1500), ctx.status(404), ctx.json({ error: 'not found' }));
   }),
 
   // details
@@ -25,6 +27,8 @@ export const StarshipsHandlers = [
       (pageData as typeof pageOne | typeof pageTwo).results.find((ship) => ship.url.endsWith(`/${id}/`)),
     );
 
-    return starship ? res(ctx.status(200), ctx.json(starship)) : res(ctx.status(404), ctx.json({ error: 'not found' }));
+    return starship
+      ? res(ctx.delay(1500), ctx.status(200), ctx.json(starship))
+      : res(ctx.delay(1500), ctx.status(404), ctx.json({ error: 'not found' }));
   }),
 ];

@@ -11,6 +11,7 @@ export const STARSHIPS_FEATURE_KEY = 'starships';
 
 export interface StarshipsState extends EntityState<Starship> {
   dataState: DataState;
+  currentPage: number;
   totalStarships: number;
   loadedPagesExpiration: {
     [page: number]: string; // date in ISO format with expiration of ship page
@@ -27,6 +28,7 @@ export const starshipsAdapter = createEntityAdapter<Starship>({
 
 export const initialState: StarshipsState = starshipsAdapter.getInitialState({
   dataState: LoadingState.INIT,
+  currentPage: 1,
   totalStarships: 0,
   loadedPagesExpiration: {},
   loadedDetailsExpiration: {},
@@ -41,6 +43,7 @@ export const starshipsReducer = createReducer(
   on(StarshipsApiActions.loadStarshipsPageSuccess, (state, { page, starships, totalStarships }) =>
     starshipsAdapter.addMany(starships, {
       ...state,
+      currentPage: page,
       totalStarships,
       loadedPagesExpiration: { ...state.loadedPagesExpiration, [page]: getStarshipListExpirationFromNow() },
       dataState: LoadingState.LOADED,
