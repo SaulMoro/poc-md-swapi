@@ -11,3 +11,5 @@ export const enterLargeBreakpointWithSidebarOpen = createAction(
 export const openLogin = createAction('[App Page] Open Login');
 
 export const closeFloatingSidebar = createAction('[App Page] Close Floating Sidebar');
+
+export const dismissCookieBanner = createAction('[App Page] Dismiss Cookie Banner');
