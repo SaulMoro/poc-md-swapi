@@ -4,6 +4,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { SvgIconsModule } from '@ngneat/svg-icon';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { AuthSelectors } from '@md-starwars/core/auth';
 import { SharedModule } from '@md-starwars/shared/shared.module';
@@ -13,6 +14,7 @@ test('renders the component', async () => {
   await render(LazyLoginComponent, {
     imports: [
       HttpClientModule,
+      RouterTestingModule,
       StoreModule.forRoot({}),
       EffectsModule.forRoot(),
       SvgIconsModule.forRoot(),
