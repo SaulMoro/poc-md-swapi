@@ -17,7 +17,6 @@ import {
 export class StarshipsListComponent implements OnInit {
   loading$ = this.store.select(StarshipsSelectors.selectLoading);
   starships$ = this.store.select(StarshipsSelectors.selectAllStarships);
-  totalStarships$ = this.store.select(StarshipsSelectors.selectTotalStarships);
 
   constructor(private store: Store) {}
 
