@@ -1,5 +1,6 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TranslocoModule } from '@ngneat/transloco';
 import { SvgIconsModule } from '@ngneat/svg-icon';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -44,7 +45,7 @@ import { AuthEffects, AuthTokenInterceptor } from './auth';
       },
     }),
   ],
-  exports: [LayoutModule],
+  exports: [LayoutModule, TranslocoModule, SvgIconsModule],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthTokenInterceptor, multi: true }],
 })
 export class CoreModule {

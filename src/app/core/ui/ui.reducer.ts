@@ -11,6 +11,9 @@ export interface UiState {
     main: boolean;
     login: boolean;
   };
+  dismissedMsgs: {
+    cookies: boolean;
+  };
 }
 
 export const initialState: UiState = {
@@ -18,6 +21,9 @@ export const initialState: UiState = {
   sidebars: {
     main: false,
     login: false,
+  },
+  dismissedMsgs: {
+    cookies: false,
   },
 };
 
@@ -47,5 +53,10 @@ export const uiReducer = createReducer(
   on(UiActions.closeFloatingSidebar, AuthApiActions.loginSuccess, AuthActions.enterSignInPage, (state) => ({
     ...state,
     sidebars: { ...state.sidebars, login: false },
+  })),
+
+  on(UiActions.dismissCookieBanner, (state) => ({
+    ...state,
+    dismissedMsgs: { ...state.dismissedMsgs, cookies: true },
   })),
 );
