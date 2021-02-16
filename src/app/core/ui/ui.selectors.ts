@@ -8,5 +8,7 @@ export const selectTheme = createSelector(selectUiState, (state) => state.theme)
 export const selectSidebars = createSelector(selectUiState, (state) => state.sidebars);
 
 export const selectMainSidebar = createSelector(selectSidebars, (sidebars) => sidebars.main);
-
 export const selectLoginSidebar = createSelector(selectSidebars, (sidebars) => sidebars.login);
+
+export const selectDismissedMsgs = createSelector(selectUiState, (state) => state.dismissedMsgs);
+export const showCookiesBanner = createSelector(selectDismissedMsgs, (dismissedMsgs) => !dismissedMsgs.cookies);

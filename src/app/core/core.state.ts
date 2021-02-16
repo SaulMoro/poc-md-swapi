@@ -19,7 +19,7 @@ export const reducers: ActionReducerMap<RootState> = {
 
 export const localStorageSyncMetaReducer = (reducer: ActionReducer<RootState>): ActionReducer<RootState> =>
   localStorageSync({
-    keys: [AUTH_FEATURE_KEY],
+    keys: [AUTH_FEATURE_KEY, { [UI_FEATURE_KEY]: [`dismissedMsgs`] }],
     rehydrate: true,
     removeOnUndefined: true,
     storageKeySerializer: (key) => `MD_${key}`,
