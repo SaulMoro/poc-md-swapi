@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { CanActivate } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { take } from 'rxjs/operators';
 import { selectIsAdmin } from '../+state/auth.selectors';
 
 @Injectable({
@@ -11,6 +12,6 @@ export class AdminGuard implements CanActivate {
   constructor(private store: Store) {}
 
   canActivate(): Observable<boolean> {
-    return this.store.select(selectIsAdmin);
+    return this.store.select(selectIsAdmin).pipe(take(1));
   }
 }

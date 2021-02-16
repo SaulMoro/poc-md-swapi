@@ -1,16 +1,16 @@
-<div
-  *ngIf="sidebars$ | async as sidebars"
-  class="flex flex-col h-full min-h-screen bg-white dark:bg-gray-900 dark:text-gray-200"
->
-  <app-header
-    [theme]="(theme$ | async) || 'light'"
-    [mainSidebar]="sidebars.main"
-    [loggedIn]="(loggedIn$ | async) || false"
-    (toggleTheme)="toggleTheme()"
-    (toggleMainSidebar)="toggleMainSidebar()"
-    (openLogin)="login()"
-  ></app-header>
-  <div class="flex flex-grow overflow-auto">
+<div *ngIf="sidebars$ | async as sidebars" class="flex flex-col h-screen bg-white dark:bg-gray-900 dark:text-gray-200">
+  <header>
+    <app-header
+      [theme]="(theme$ | async) || 'light'"
+      [mainSidebar]="sidebars.main"
+      [loggedIn]="(loggedIn$ | async) || false"
+      (toggleTheme)="toggleTheme()"
+      (toggleMainSidebar)="toggleMainSidebar()"
+      (openLogin)="login()"
+    ></app-header>
+  </header>
+
+  <main class="flex-1 overflow-y-auto">
     <app-main-sidebar
       [display]="sidebars.main"
       [loggedIn]="(loggedIn$ | async) || false"
@@ -18,13 +18,13 @@
       (itemSelected)="itemSelected()"
     ></app-main-sidebar>
 
-    <main class="w-full h-full py-2">
+    <div class="flex-1 py-2">
       <router-outlet></router-outlet>
-    </main>
-  </div>
+    </div>
 
-  <app-floating-sidebar [display]="sidebars.login" (closeSidebar)="closeFloatingSidebar()">
-    <!-- Lazy loaded components -->
-    <ng-template #floatingSidebarContainer></ng-template>
-  </app-floating-sidebar>
+    <app-floating-sidebar [display]="sidebars.login" (closeSidebar)="closeFloatingSidebar()">
+      <!-- Lazy loaded components -->
+      <ng-template #floatingSidebarContainer></ng-template>
+    </app-floating-sidebar>
+  </main>
 </div>

@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
 import { merge, of } from 'rxjs';
-import { catchError, exhaustMap, filter, groupBy, map, mergeMap, tap } from 'rxjs/operators';
+import { catchError, exhaustMap, filter, groupBy, map, mergeMap } from 'rxjs/operators';
 
 import * as StarshipsActions from './starships.actions';
 import * as StarshipsApiActions from './starships-api.actions';
@@ -17,20 +16,21 @@ export class StarshipsEffects {
     merge(
       this.actions$.pipe(
         ofType(StarshipsActions.enterStarshipsPage),
-        concatLatestFrom(() => this.store.select(StarshipsSelectors.selectCurrentPage)),
-        map(([, page]) => page),
+        map(() => ({ page: 1 })),
       ),
       this.actions$.pipe(
-        ofType(StarshipsActions.scrollToNextStarshipsPage, StarshipsActions.scrollToPrevStarshipsPage),
-        concatLatestFrom(() => this.store.select(StarshipsSelectors.selectCurrentPage)),
-        map(([{ type }, page]) => (type === StarshipsActions.scrollToNextStarshipsPage.type ? page + 1 : page - 1)),
-        // Keep page in updated router state
-        tap((page) => this.router.navigate([], { queryParams: { page }, queryParamsHandling: 'merge' })),
+        ofType(StarshipsActions.scrollToNextStarshipsPage),
+        concatLatestFrom(() => [
+          this.store.select(StarshipsSelectors.selectCurrentPage),
+          this.store.select(StarshipsSelectors.selectStarshipsTotalPages),
+        ]),
+        filter(([, page, pages]) => page < pages),
+        map(([, page]) => ({ page: page + 1 })),
       ),
     ).pipe(
-      concatLatestFrom((page) => this.store.select(StarshipsSelectors.selectExpirationOfPage, { page })),
+      concatLatestFrom(({ page }) => this.store.select(StarshipsSelectors.selectExpirationOfPage, { page })),
       filter(([, expirationOfPage]) => !expirationOfPage || dateInISOIsExpired(expirationOfPage)),
-      map(([page]) => StarshipsApiActions.loadStarshipsPageStart({ page })),
+      map(([{ page }]) => StarshipsApiActions.loadStarshipsPageStart({ page })),
     ),
   );
 
@@ -89,10 +89,5 @@ export class StarshipsEffects {
     ),
   );
 
-  constructor(
-    private actions$: Actions,
-    private store: Store,
-    private router: Router,
-    private starshipsService: StarshipsService,
-  ) {}
+  constructor(private actions$: Actions, private store: Store, private starshipsService: StarshipsService) {}
 }
