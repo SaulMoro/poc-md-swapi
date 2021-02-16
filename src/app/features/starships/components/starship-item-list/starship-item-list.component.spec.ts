@@ -1,27 +1,14 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { render, screen } from '@testing-library/angular';
 import { SvgIconsModule } from '@ngneat/svg-icon';
 
 import { icons } from '@md-starwars/shared/shared.icons';
 import { StarshipItemListComponent } from './starship-item-list.component';
 
-describe('StarshipItemListComponent', () => {
-  let component: StarshipItemListComponent;
-  let fixture: ComponentFixture<StarshipItemListComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [SvgIconsModule.forRoot({ icons })],
-      declarations: [StarshipItemListComponent],
-    }).compileComponents();
+test('renders the component', async () => {
+  await render(StarshipItemListComponent, {
+    imports: [SvgIconsModule.forRoot({ icons })],
+    providers: [],
   });
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(StarshipItemListComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+  expect(screen).toBeTruthy();
 });

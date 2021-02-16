@@ -1,26 +1,17 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideMockStore } from '@ngrx/store/testing';
+import { render, screen } from '@testing-library/angular';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { SvgIconsModule } from '@ngneat/svg-icon';
+import { HttpClientModule } from '@angular/common/http';
 
 import { StarshipDetailsComponent } from './starship-details.component';
 
-describe('StarshipDetailsComponent', () => {
-  let component: StarshipDetailsComponent;
-  let fixture: ComponentFixture<StarshipDetailsComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [StarshipDetailsComponent],
-      providers: [provideMockStore()],
-    }).compileComponents();
+test('renders the component', async () => {
+  await render(StarshipDetailsComponent, {
+    imports: [HttpClientModule, StoreModule.forRoot({}), EffectsModule.forRoot(), SvgIconsModule.forRoot()],
+    providers: [provideMockStore()],
   });
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(StarshipDetailsComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+  expect(screen).toBeTruthy();
 });
