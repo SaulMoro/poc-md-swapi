@@ -4,7 +4,7 @@ PoC para MD consumiendo Swapi
 
 **IMPORTANTE: Si van a ver la app mediante el enlace de firebase del repositorio, hay que desactivar el CORS para que funcione el registro y el login en la demo, al ser un servicio de terceros que tiene bloqueada las conexiones. Si levantan la aplicación en local esto no ocurre.**
 
-[Demo of project](https://poc-md-swapi.web.app)
+[Demo of project](https://poc-md-swapi.firebaseapp.com/)
 
 ## Table of Contents
 
@@ -91,7 +91,7 @@ Estas son algunas anotaciones de las decisiones tomadas, se puede obtener más i
 - Se ha creado una Preloading Strategy basada en roles, dónde no hará la precarga de módulos a los que el usuario no puede acceder por sus permisos.
 - Se ha creado una directiva para hacer las imágenes lazy, no cargará las imágenes que no están en la vista actual.
 - Otras mejoras: trackBy, Componentes OnPush, Intersection Observer, ...
- 
+
 Otras optimizaciones que se pueden realizar:
 
 - Colocar los assets en un CDN
