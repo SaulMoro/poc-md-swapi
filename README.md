@@ -2,7 +2,7 @@
 
 PoC para MD consumiendo Swapi
 
-**IMPORTANTE: Hay que desactivar el CORS para que funcione el registro y el login, al ser un servicio de terceros que tiene bloqueada las conexiones**
+**IMPORTANTE: Si van a ver la app mediante el enlace de firebase del repositorio, hay que desactivar el CORS para que funcione el registro y el login en la demo, al ser un servicio de terceros que tiene bloqueada las conexiones. Si levantan la aplicación en local esto no ocurre.**
 
 [Demo of project](https://poc-md-swapi.web.app)
 
@@ -22,7 +22,7 @@ PoC para MD consumiendo Swapi
 
 ## **Description**
 
-**IMPORTANTE: Hay que desactivar el CORS para que funcione el registro y el login, al ser un servicio de terceros que tiene bloqueada las conexiones**
+**IMPORTANTE: Si van a ver la app mediante el enlace de firebase del repositorio, hay que desactivar el CORS para que funcione el registro y el login en la demo, al ser un servicio de terceros que tiene bloqueada las conexiones. Si levantan la aplicación en local esto no ocurre.**
 
 Entendemos que la primera versión era una prueba de concepto con motivos de presentación a negocio y ahora se requiere una estructura base empresarial. Nos basaremos en las mejores prácticas, clean code y últimas tecnologías disponibles. Las carácterísticas generales de la arquitectura desarrollada es:
 
