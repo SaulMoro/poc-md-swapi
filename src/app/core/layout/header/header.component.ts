@@ -25,8 +25,4 @@ export class HeaderComponent {
   onOpenLogin(): void {
     this.openLogin.emit();
   }
-
-  trackByFn(index: number): number {
-    return index;
-  }
 }

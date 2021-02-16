@@ -9,6 +9,10 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
+    path: 'starships',
+    loadChildren: () => import('./features/starships/starships.module').then((m) => m.StarshipsModule),
+  },
+  {
     path: 'sign-in',
     loadChildren: () => import('./features/sign-in/sign-in.module').then((m) => m.SignInModule),
     canActivate: [NoAuthGuard],
@@ -26,6 +30,7 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes, {
       preloadingStrategy: RoleBasedPreloader,
+      anchorScrolling: 'enabled',
       scrollPositionRestoration: 'enabled',
     }),
   ],

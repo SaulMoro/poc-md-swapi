@@ -9,6 +9,8 @@ export const FilmsHandlers = [
     const { id } = req.params;
     const film = data.find((f) => f.url.endsWith(`/${id}/`));
 
-    return film ? res(ctx.status(200), ctx.json(film)) : res(ctx.status(404), ctx.json({ error: 'not found' }));
+    return film
+      ? res(ctx.delay(), ctx.status(200), ctx.json(film))
+      : res(ctx.delay(), ctx.status(404), ctx.json({ error: 'not found' }));
   }),
 ];

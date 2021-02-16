@@ -24,6 +24,7 @@ export const authReducer = createReducer(
   on(AuthActions.enterLoginSidebar, AuthActions.enterSignInPage, (state) => ({
     ...state,
     error: null,
+    loading: false,
   })),
 
   on(AuthActions.login, (state) => ({ ...state, token: null, loading: true, error: null })),
