@@ -1,5 +1,7 @@
 import '@testing-library/cypress/add-commands';
 
 describe('App smoke test', () => {
-  cy.visit('/');
+  before(() => {
+    cy.visit('/');
+  });
 });
