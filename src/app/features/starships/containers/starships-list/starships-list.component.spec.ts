@@ -4,21 +4,24 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { SvgIconsModule } from '@ngneat/svg-icon';
 import { HttpClientModule } from '@angular/common/http';
-
-import { LazyImgDirective } from '@md-starwars/shared/directives/lazy-img.directive';
-import { StarshipsListComponent } from './starships-list.component';
+import { RouterTestingModule } from '@angular/router/testing';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+
+import { SharedModule } from '@md-starwars/shared/shared.module';
+import { StarshipsListComponent } from './starships-list.component';
 
 test('renders the component', async () => {
   await render(StarshipsListComponent, {
     imports: [
       HttpClientModule,
+      RouterTestingModule,
       StoreModule.forRoot({}),
       EffectsModule.forRoot(),
       SvgIconsModule.forRoot(),
       InfiniteScrollModule,
+      SharedModule,
     ],
-    providers: [provideMockStore(), LazyImgDirective],
+    providers: [provideMockStore()],
   });
 
   expect(screen).toBeTruthy();
