@@ -29,11 +29,11 @@ export class StarshipsListComponent implements OnInit {
     this.store.dispatch(StarshipsActions.scrollToNextStarshipsPage());
   }
 
-  trackByFn(index: number): number {
-    return index;
-  }
-
   getStarshipId(starship: Starship): number {
     return selectStarshipId(starship);
+  }
+
+  trackByFn(index: number): number {
+    return index;
   }
 }

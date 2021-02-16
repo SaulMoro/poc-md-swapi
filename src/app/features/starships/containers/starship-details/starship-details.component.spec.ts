@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideMockStore } from '@ngrx/store/testing';
 
 import { StarshipDetailsComponent } from './starship-details.component';
 
@@ -9,6 +10,7 @@ describe('StarshipDetailsComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [StarshipDetailsComponent],
+      providers: [provideMockStore()],
     }).compileComponents();
   });
 
