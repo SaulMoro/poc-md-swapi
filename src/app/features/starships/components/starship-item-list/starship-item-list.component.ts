@@ -12,10 +12,8 @@ import { selectStarshipId, Starship } from '@md-starwars/shared/data-access-star
 export class StarshipItemListComponent {
   @Input() starship: Starship | null = null;
 
-  swapiAssets = environment.swapiAssets;
-
   getImg(starship: Starship): string {
     const id = selectStarshipId(starship);
-    return `${this.swapiAssets}${id}.jpg`;
+    return `${environment.swapiAssets}/starships/${id}.jpg`;
   }
 }

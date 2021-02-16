@@ -1,4 +1,4 @@
 export * from './data-access-films.module';
-import { Film } from './models';
+export * from './models';
 import * as FilmsSelectors from './+state/films.selectors';
-export { Film, FilmsSelectors };
+export { FilmsSelectors };

@@ -32,7 +32,7 @@ export class StarshipsListComponent implements OnInit {
     return selectStarshipId(starship);
   }
 
-  trackByFn(index: number): number {
-    return index;
+  trackByFn(_index: number, starship: Starship): number {
+    return selectStarshipId(starship);
   }
 }

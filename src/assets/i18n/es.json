@@ -2,7 +2,13 @@
   "LANGUAGE": "Español",
   "STARSHIPS": {
     "TITLE": "Naves",
-    "FIELDS": {}
+    "FIELDS": {},
+    "DETAILS": {
+      "PILOTS": "Pilotos",
+      "EMPTY_PILOTS": "No se conocen sus pilotos",
+      "FILMS": "Películas",
+      "EMPTY_FILMS": "No ha salido en ninguna película"
+    }
   },
   "FILMS": {
     "TITLE": "Películas"
@@ -52,6 +58,9 @@
     "MY_ACCOUNT": "Mi cuenta",
     "MY_BAG": "Mi cesta",
     "LOGIN_SIGNIN": "Iniciar sesión / Registrarse"
+  },
+  "MESSAGES": {
+    "ONLY_ONE_TIME": "Este mensaje solo se mostrará la primera vez, una vez descartado no se vuelve a mostrar"
   },
   "BUTTONS": {
     "ACCEPT_DEFAULT": "Aceptar",

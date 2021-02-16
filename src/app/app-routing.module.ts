@@ -30,6 +30,7 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes, {
       preloadingStrategy: RoleBasedPreloader,
+      anchorScrolling: 'enabled',
       scrollPositionRestoration: 'enabled',
     }),
   ],

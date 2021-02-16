@@ -7,7 +7,7 @@ export const environment = {
   production: false,
   apiUrl: 'https://swapi.dev/api',
   authUrl: 'https://rest-api-slim-php.herokuapp.com',
-  swapiAssets: 'https://starwars-visualguide.com/assets/img/starships/',
+  swapiAssets: 'https://starwars-visualguide.com/assets/img',
   supportedLanguages: ['es'],
   defaultLanguage: 'es',
 };

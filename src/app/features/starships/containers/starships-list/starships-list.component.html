@@ -11,9 +11,6 @@
     <app-starship-item-list [starship]="starship"></app-starship-item-list>
   </a>
   <ng-container *ngIf="loading$ | async">
-    <app-starship-item-list
-      *ngFor="let item of [].constructor(10); trackBy: trackByFn"
-      [starship]="null"
-    ></app-starship-item-list>
+    <app-starship-item-list *ngFor="let item of [].constructor(10)" [starship]="null"></app-starship-item-list>
   </ng-container>
 </div>

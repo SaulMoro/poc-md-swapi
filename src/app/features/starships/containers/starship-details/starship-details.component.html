@@ -1,1 +1,111 @@
-<p>{{ starship$ | async | json }}</p>
+<ng-container *transloco="let t">
+  <section
+    *ngIf="starship$ | async as starship; else loadingStarship"
+    class="container relative w-full h-full px-5 pb-10 mx-auto space-y-6 overflow-hidden lg:py-10"
+  >
+    <div
+      class="relative w-full max-w-6xl p-10 mx-auto text-gray-800 bg-white rounded shadow-xl lg:p-20 md:text-left dark:bg-gray-700"
+    >
+      <div class="items-center -mx-10 md:flex">
+        <div class="w-full px-10 mb-10 md:w-1/2 md:mb-0">
+          <div class="relative">
+            <img
+              lazyImg
+              class="relative z-10 w-3/4 rounded-sm"
+              [data-src]="getImg(starship)"
+              [alt]="starship.name"
+              onerror="this.src='./assets/img/errorImg.svg';"
+            />
+            <div class="absolute z-0 border-4 border-grey-600 top-10 bottom-10 left-10 right-10"></div>
+          </div>
+        </div>
+        <div class="space-y-4">
+          <div class="flex items-center justify-between w-full px-10">
+            <div class="space-y-2">
+              <h1 class="text-xl font-bold uppercase lg:text-2xl dark:text-gray-50">{{ starship.name }}</h1>
+              <p class="block text-gray-700 dark:text-gray-300">
+                {{ starship?.model }}
+              </p>
+            </div>
+            <div class="flex items-center space-x-2 text-xs text-gray-600 dark:text-gray-300">
+              <svg-icon class="-mt-1" key="usergroup" size="xs"></svg-icon>
+              <span>{{ starship?.passengers }}</span>
+            </div>
+          </div>
+          <div class="w-full px-10">
+            <p class="text-sm dark:text-gray-300">
+              Lorem ipsum dolor sit, amet consectetur adipisicing, elit. Eos, voluptatum dolorum! Laborum blanditiis
+              consequatur, voluptates, sint enim fugiat saepe, dolor fugit, magnam explicabo eaque quas id quo porro
+              dolorum facilis...
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Films -->
+    <div class="max-w-6xl py-4 mx-auto bg-white rounded shadow-xl md:text-left dark:bg-gray-700">
+      <div class="w-full px-10">
+        <h1 class="mb-5 text-xl font-medium lg:text-2xl dark:text-gray-50">{{ t('STARSHIPS.DETAILS.FILMS') }}</h1>
+        <div *ngIf="starship.films.length; else emptyFilms" class="flex flex-wrap w-full gap-6">
+          <div *ngFor="let filmUrl of starship.films; trackBy: trackByFn">
+            <img
+              lazyImg
+              class="h-32 ring-2 ring-white"
+              [data-src]="getFilmImgFromUrl(filmUrl)"
+              onerror="this.src='./assets/img/errorImg.svg';"
+            />
+          </div>
+        </div>
+        <ng-template #emptyFilms>
+          <p class="text-sm dark:text-gray-300">{{ t('STARSHIPS.DETAILS.EMPTY_FILMS') }}</p>
+        </ng-template>
+      </div>
+    </div>
+
+    <!-- Pilots -->
+    <div class="max-w-6xl py-4 mx-auto bg-white rounded shadow-xl md:text-left dark:bg-gray-700">
+      <div class="w-full px-10 md:w-1/2">
+        <h1 class="mb-5 text-xl font-medium lg:text-2xl dark:text-gray-50">{{ t('STARSHIPS.DETAILS.PILOTS') }}</h1>
+        <ng-container *ngIf="starship.pilots.length; else emptyPilots">
+          <img
+            *ngFor="let pilotUrl of starship.pilots; trackBy: trackByFn"
+            lazyImg
+            class="inline-block w-10 rounded-full ring-2 ring-white"
+            [data-src]="getPeopleImgFromUrl(pilotUrl)"
+            onerror="this.src='./assets/img/errorImg.svg';"
+          />
+        </ng-container>
+        <ng-template #emptyPilots>
+          <p class="text-sm dark:text-gray-300">{{ t('STARSHIPS.DETAILS.EMPTY_PILOTS') }}</p>
+        </ng-template>
+      </div>
+    </div>
+  </section>
+
+  <ng-template #loadingStarship>
+    <section class="container relative w-full h-full px-5 pb-10 mx-auto space-y-6 overflow-hidden lg:py-10">
+      <div
+        class="relative w-full max-w-6xl p-10 mx-auto text-gray-800 bg-white rounded shadow-xl lg:p-20 md:text-left dark:bg-gray-700"
+      >
+        <div class="w-full h-64 delay-200 bg-gray-300 animate-pulse"></div>
+      </div>
+
+      <!-- Films -->
+      <div class="max-w-6xl py-4 mx-auto bg-white rounded shadow-xl md:text-left dark:bg-gray-700">
+        <div class="w-full px-10">
+          <h1 class="mb-5 text-xl font-medium lg:text-2xl dark:text-gray-50">{{ t('STARSHIPS.DETAILS.FILMS') }}</h1>
+          <div class="w-full h-32 delay-200 bg-gray-300 animate-pulse"></div>
+        </div>
+      </div>
+
+      <!-- Pilots -->
+      <div class="max-w-6xl py-4 mx-auto bg-white rounded shadow-xl md:text-left dark:bg-gray-700">
+        <div class="w-full px-10 md:w-1/2">
+          <h1 class="mb-5 text-xl font-medium lg:text-2xl dark:text-gray-50">{{ t('STARSHIPS.DETAILS.PILOTS') }}</h1>
+          <div class="w-full h-32 delay-200 bg-gray-300 animate-pulse"></div>
+        </div>
+      </div>
+    </section>
+  </ng-template>
+</ng-container>
