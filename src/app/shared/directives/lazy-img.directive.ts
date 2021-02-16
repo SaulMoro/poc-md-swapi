@@ -1,4 +1,4 @@
-import { AfterViewInit, Directive, ElementRef, Input, Renderer2 } from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, HostListener, Input, Renderer2 } from '@angular/core';
 import 'lazysizes';
 import 'lazysizes/plugins/unveilhooks/ls.unveilhooks';
 
@@ -22,6 +22,9 @@ export class LazyImgDirective implements AfterViewInit {
 
   /** HTMLImageElement srcset attribute. */
   @Input('data-srcset') srcSet: string | null = null;
+
+  /** Fallback Img. */
+  @Input() imgFallback: string | null = null;
 
   /** A transparent gif. */
   transparent = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
@@ -52,5 +55,11 @@ export class LazyImgDirective implements AfterViewInit {
       }
     }
     this.renderer.addClass(this.el, 'lazyload');
+  }
+
+  @HostListener('error')
+  loadFallbackOnError() {
+    const element: HTMLImageElement = <HTMLImageElement>this.elementRef.nativeElement;
+    element.src = this.imgFallback || './assets/img/errorImg.svg';
   }
 }
