@@ -42,16 +42,12 @@ jobs:
         run: |
           npm run test:ci
 
-      ###
-      # Disable for fastest CI
-      ####
-      # - name: Run E2E test
-      #   uses: cypress-io/github-action@v2
-      #   with:
-      #     start: npm start
-      #     wait-on: 'http://localhost:4200'
-      #     config: baseUrl=https://localhost:4200
-      ####
+      - name: Run E2E test
+        uses: cypress-io/github-action@v2
+        with:
+          start: npm start
+          wait-on: 'http://localhost:4200'
+          config: baseUrl=http://localhost:4200
 
       - name: Build it 👷🏻‍♂️
         run: |
