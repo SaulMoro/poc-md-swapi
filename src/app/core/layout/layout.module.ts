@@ -9,8 +9,14 @@ import { HeaderComponent } from './header/header.component';
 import { ToggleThemeComponent } from './header/toggle-theme/toggle-theme.component';
 import { MainSidebarComponent } from './main-sidebar/main-sidebar.component';
 import { FloatingSidebarComponent } from './floating-sidebar/floating-sidebar.component';
+import { FloatingBannerComponent } from './floating-banner/floating-banner.component';
 
-const EXPORTED_DECLARATIONS = [HeaderComponent, MainSidebarComponent, FloatingSidebarComponent];
+const EXPORTED_DECLARATIONS = [
+  HeaderComponent,
+  MainSidebarComponent,
+  FloatingSidebarComponent,
+  FloatingBannerComponent,
+];
 
 @NgModule({
   declarations: [...EXPORTED_DECLARATIONS, ToggleThemeComponent],

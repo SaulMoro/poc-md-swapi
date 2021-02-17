@@ -28,15 +28,10 @@
     </app-floating-sidebar>
 
     <!-- Cookies example -->
-    <div *ngIf="cookiesBanner$ | async" class="fixed bottom-0 left-0 z-50 w-full h-16 bg-black">
-      <div class="relative block w-full h-full p-4">
-        <svg-icon
-          class="absolute text-gray-500 cursor-pointer fill-current top-4 right-3 hover:text-gray-700 dark:text-gray-500 dark:hover:text-gray-400"
-          key="close"
-          (click)="dismissCookiesBanner()"
-        ></svg-icon>
-        <p class="font-medium text-gray-50" *transloco="let t">{{ t('MESSAGES.COOKIES_BANNER') }}</p>
-      </div>
-    </div>
+    <app-floating-banner
+      *ngIf="cookiesBanner$ | async"
+      [message]="'MESSAGES.COOKIES_BANNER'"
+      (dismiss)="dismissCookiesBanner()"
+    ></app-floating-banner>
   </main>
 </div>

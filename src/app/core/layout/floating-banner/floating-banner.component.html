@@ -1,0 +1,10 @@
+<div class="fixed bottom-0 left-0 z-50 w-full bg-black h-28 sm:h-20">
+  <div class="flex justify-end w-full h-full p-4 space-x-2">
+    <p class="flex-1 font-medium text-justify text-gray-50" *transloco="let t">{{ t(message) }}</p>
+    <svg-icon
+      class="text-gray-500 cursor-pointer fill-current hover:text-gray-700 dark:text-gray-500 dark:hover:text-gray-400"
+      key="close"
+      (click)="close()"
+    ></svg-icon>
+  </div>
+</div>
